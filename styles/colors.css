@@ -1,40 +1,76 @@
 :root {
-  --main-color: #B9FAF8;
+  --primary: #B9FAF8;
+  --primary-2: #62F4EF;
   --secondary: #3C096C;
-  --secondary-darker: #180042;
+  --secondary-2: #180042;
   --accent: #6A994E;
 }
 
 main.main {
-  color: var(--secondary-darker);
-  background-color: var(--main-color);
+  color: var(--secondary-2);
+  background-color: var(--primary);
 }
 
-textarea.textarea:focus,
+textarea.textarea,
+input.text-field {
+  border-color: var(--secondary);
+  background-color: var(--primary-2);
+}
+
+input.text-field {
+  border-bottom-color: var(--secondary);
+}
+
+textarea.textarea:focus {
+  outline-color: var(--accent);
+}
+
 input.text-field:focus {
-  outline-color: var(--secondary);
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+button.button:active {
+  background-color: var(--accent);
+  color: var(--primary);
+  border-color: var(--accent);
 }
 
 button.btn-primary {
   background-color: var(--secondary);
-  color: inherit;
+  color: var(--primary);
   border-color: transparent;
 }
 
 button.btn-secondary {
   color: var(--secondary);
-  background-color: var(--main-color);
+  background-color: var(--primary);
   border-color: var(--secondary);
 }
 
-label.form-input input.checkbox,
-label.form-input input.radio {
+input.checkbox,
+input.radio {
   border-color: var(--secondary);
-  background-color: inherit;
+  background-color: var(--primary);
 }
 
-label.form-input input.checkbox:checked {
-  color: inherit;
+label.form-input input.switch {
+  border-color: var(--secondary);
   background-color: var(--secondary);
-  border-width: 2px;
+}
+
+input.switch::before {
+  background-color: var(--primary);
+}
+  input.checkbox:checked,
+input.radio:checked,
+label.form-input input.switch:checked {
+  color: var(--primary);
+  background-color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+input.radio::before:checked {
+  color: var(--primary);
+  background: var(--primary);
 }

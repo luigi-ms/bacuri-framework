@@ -12,17 +12,27 @@ label.form-input {
 }
 
 span.text-label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 /* Text inputs  */
+
 input.text-field {
-  height: 1.15rem;
+  height: 1.3rem;
+  border: none;
+  border-bottom-style: solid;
 }
 
 textarea.textarea {
- resize: none;
-  height: 3rem;
+  resize: none;
+  height: 4rem;
+  border-radius: 4px;
+}
+
+input.text-field,
+textarea.textarea {
+  border-width: 2px;
+  padding: 0.25rem;
 }
 
 /* Buttons general  styling*/
@@ -30,7 +40,9 @@ button.button {
   height: 1.75rem;
   padding: 0.1rem;
   text-align: center;
+  border-radius: 4px;
 }
+
 
 button.btn-primary,
 button.btn-secondary {
@@ -62,4 +74,31 @@ input.radio {
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
+}
+
+input.radio::before {
+  content: '';
+  width: 50%;
+  position: relative;
+}
+
+input.radio:checked::before {
+  content: '•';
+  bottom: 17%;
+  left: 23%;
+}
+
+input.switch {
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+input.switch::before {
+  border-radius: 50%;
+  content: 'a';
+  position: relative;
+  left: 0;
+  top: 50%;
 }

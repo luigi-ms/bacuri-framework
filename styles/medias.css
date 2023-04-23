@@ -14,10 +14,15 @@
     width: 25%;
   }
 
-  label.label input.checkbox,
-  label.label input.radio {
+  label.form-input input.checkbox,
+  label.form-input input.radio {
     height: 1.08rem;
     width: 4.2vw;
+  }
+
+  label.form-input input.switch {
+    height: 0.4rem;
+    width: 6vw;
   }
 }
 
