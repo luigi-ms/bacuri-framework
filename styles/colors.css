@@ -11,6 +11,7 @@ main.main {
   background-color: var(--primary);
 }
 
+/* Forms colors */
 textarea.textarea,
 input.text-field {
   border-color: var(--secondary);
@@ -54,17 +55,22 @@ input.radio {
   background-color: var(--primary);
 }
 
-label.form-input input.switch {
+input.switch {
   border-color: var(--secondary);
   background-color: var(--secondary);
 }
 
 input.switch::before {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
-  input.checkbox:checked,
+
+input.switch:checked::before {
+  background-color: var(--accent);
+}
+
+input.checkbox:checked,
 input.radio:checked,
-label.form-input input.switch:checked {
+input.switch:checked {
   color: var(--primary);
   background-color: var(--accent);
   border: 2px solid var(--accent);
