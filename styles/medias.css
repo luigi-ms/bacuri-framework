@@ -5,13 +5,19 @@
     height: auto;
   }
 
-  form.form label.label input.text-input,
-  form.form label.label textarea.textarea {
+  input.text-input,
+  textarea.textarea {
     width: 18rem;
   }
 
-  form.form button.button {
+  button.button {
     width: 25%;
+  }
+
+  label.label input.checkbox,
+  label.label input.radio {
+    height: 1.08rem;
+    width: 4.2vw;
   }
 }
 

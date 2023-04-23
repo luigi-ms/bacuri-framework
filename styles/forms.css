@@ -1,10 +1,10 @@
-main.main form.form {
+form.form {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-form.form label.label {
+label.label {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,17 +12,17 @@ form.form label.label {
 }
 
 /* Text inputs  */
-form.form label.label input.text-input {
+input.text-input {
   height: 1.15rem;
 }
 
-form.form label.label textarea.textarea {
+textarea.textarea {
  resize: none;
   height: 3rem;
 }
 
 /* Buttons general  styling*/
-form.form button.button {
+button.button {
   height: 1.75rem;
   padding: 0.1rem;
   text-align: center;
@@ -32,4 +32,30 @@ button.btn-primary,
 button.btn-secondary {
   border-width: 1px;
   border-style: solid;
+}
+
+input.checkbox {
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+input.checkbox::before {
+  content: '';
+  font-weight: bold;
+  position: relative;
+}
+
+input.checkbox:checked::before {
+  content: 'x';
+  bottom: 20%;
+  left: 25%;
+}
+
+input.radio {
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
 }

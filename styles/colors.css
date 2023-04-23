@@ -8,23 +8,31 @@ main.main {
   color: var(--indigo-800);
 }
 
-form.form label.label textarea.textarea:focus,
-form.form label.label input.text-input:focus {
+textarea.textarea:focus,
+input.text-input:focus {
   outline-color: var(--indigo-400);
 }
 
-form.form button.btn-primary {
+button.btn-primary {
   background-color: var(--indigo-400);
   color: var(--lightblue-100);
   border-color: transparent;
 }
 
-form.form button.btn-secondary {
+button.btn-secondary {
   color: var(--indigo-400);
   background-color: var(--lightblue-100);
   border-color: var(--indigo-400);
 }
 
-.checkbox:checked:before {
-  background-color: black;
+label.label input.checkbox,
+label.label input.radio {
+  border-color: var(--indigo-400);
+  background-color: var(--lightblue-100);
+}
+
+label.label input.checkbox:checked {
+  color: var(--lightblue-100);
+  background-color: var(--indigo-400);
+  border-width: 2px;
 }
