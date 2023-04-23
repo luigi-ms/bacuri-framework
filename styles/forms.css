@@ -4,15 +4,19 @@ form.form {
   gap: 1rem;
 }
 
-label.label {
+label.form-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 0.5rem;
 }
 
+span.text-label {
+  font-size: 0.8rem;
+}
+
 /* Text inputs  */
-input.text-input {
+input.text-field {
   height: 1.15rem;
 }
 

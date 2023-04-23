@@ -5,7 +5,7 @@
     height: auto;
   }
 
-  input.text-input,
+  input.text-field,
   textarea.textarea {
     width: 18rem;
   }

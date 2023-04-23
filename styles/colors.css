@@ -1,38 +1,40 @@
 :root {
-  --lightblue-100: #B9FAF8;
-  --indigo-400: #3C096C;
-  --indigo-800: #180042;
+  --main-color: #B9FAF8;
+  --secondary: #3C096C;
+  --secondary-darker: #180042;
+  --accent: #6A994E;
 }
 
 main.main {
-  color: var(--indigo-800);
+  color: var(--secondary-darker);
+  background-color: var(--main-color);
 }
 
 textarea.textarea:focus,
-input.text-input:focus {
-  outline-color: var(--indigo-400);
+input.text-field:focus {
+  outline-color: var(--secondary);
 }
 
 button.btn-primary {
-  background-color: var(--indigo-400);
-  color: var(--lightblue-100);
+  background-color: var(--secondary);
+  color: inherit;
   border-color: transparent;
 }
 
 button.btn-secondary {
-  color: var(--indigo-400);
-  background-color: var(--lightblue-100);
-  border-color: var(--indigo-400);
+  color: var(--secondary);
+  background-color: var(--main-color);
+  border-color: var(--secondary);
 }
 
-label.label input.checkbox,
-label.label input.radio {
-  border-color: var(--indigo-400);
-  background-color: var(--lightblue-100);
+label.form-input input.checkbox,
+label.form-input input.radio {
+  border-color: var(--secondary);
+  background-color: inherit;
 }
 
-label.label input.checkbox:checked {
-  color: var(--lightblue-100);
-  background-color: var(--indigo-400);
+label.form-input input.checkbox:checked {
+  color: inherit;
+  background-color: var(--secondary);
   border-width: 2px;
 }
