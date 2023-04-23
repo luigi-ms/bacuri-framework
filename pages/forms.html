@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>LSS - Forms</title>
+    <link rel="stylesheet" href="../styles/main.css">
+  </head>
+  <body>
+    <main class="main">
+      <h1 class="h1">LSS - Forms</h1>
+      <form class="form"> 
+        <label class="form label"for="text-in">
+          Text
+          <input class="form text-input" type="text" id="text-in" placeholder="Lorem Ipsum...">
+        </label>
+       
+        <label class="form label" for="textarea-in">
+          Textarea
+          <textarea class="form textarea" id="textarea-in" placeholder="Textarea Input"></textarea>
+        </label>
+
+        <button class="form button btn-primary">Primary</button>
+        <button class="form button btn-secondary">Secondary</button>
+
+        <label class="form label" for="check-btn">
+          Checkbox
+          <input class="form checkbox" type="checkbox" id="check-btn">
+        </label>
+
+        <label class="form label" for="switch-btn">
+          Switch Button
+          <input class="form switch" type="checkbox" id="switch-btn">
+        </label>
+
+        <label class="form label" for="radio-btn">
+          Radio Button
+          <input class="form radio" type="radio" id="radio-btn">
+        </label>
+      </form>
+    </main>
+
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

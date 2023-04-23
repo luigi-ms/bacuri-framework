@@ -1,0 +1,30 @@
+:root {
+  --lightblue-100: #B9FAF8;
+  --indigo-400: #3C096C;
+  --indigo-800: #180042;
+}
+
+main.main {
+  color: var(--indigo-800);
+}
+
+form.form label.label textarea.textarea:focus,
+form.form label.label input.text-input:focus {
+  outline-color: var(--indigo-400);
+}
+
+form.form button.btn-primary {
+  background-color: var(--indigo-400);
+  color: var(--lightblue-100);
+  border-color: transparent;
+}
+
+form.form button.btn-secondary {
+  color: var(--indigo-400);
+  background-color: var(--lightblue-100);
+  border-color: var(--indigo-400);
+}
+
+.checkbox:checked:before {
+  background-color: black;
+}

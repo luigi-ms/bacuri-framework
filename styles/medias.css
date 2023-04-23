@@ -1,0 +1,19 @@
+/* Phones and tablets */
+@media (max-width: 991.98px) {
+  nav, main, footer {
+    width: 95vw;
+    height: auto;
+  }
+
+  form.form label.label input.text-input,
+  form.form label.label textarea.textarea {
+    width: 18rem;
+  }
+
+  form.form button.button {
+    width: 25%;
+  }
+}
+
+/* Laptops and desktops */
+@media (min-width: 992px) and (max-width: 1399.98px) {}
