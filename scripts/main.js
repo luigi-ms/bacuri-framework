@@ -3,8 +3,9 @@ const radioGroup = document.getElementsByClassName('radio-group');
 
 let radioGroupsCounter = 0;
 
-Array.from(radioBtns).forEach(rb => {
-  const isInRadioGroup = (rb.parentNode.className === "btn-group-item");
+/* Add a group name to radio inputs */
+Array.from(radioBtns).forEach(radioEl => {
+  const isInRadioGroup = (radioEl.parentNode.className === "btn-group-item");
 
   if(isInRadioGroup){
     Array.from(radioGroup).forEach(fieldset => {
@@ -20,3 +21,4 @@ Array.from(radioBtns).forEach(rb => {
     });
   }
 });
+
