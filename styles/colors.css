@@ -31,7 +31,8 @@ input.text-field:focus {
   border-bottom-color: var(--accent);
 }
 
-button.button:active {
+/* Buttons colors */
+.button:active {
   background-color: var(--accent);
   color: var(--primary);
   border-color: var(--accent);
@@ -47,6 +48,15 @@ button.btn-secondary {
   color: var(--secondary);
   background-color: var(--primary);
   border-color: var(--secondary);
+}
+
+a.btn-link:visited {
+  color: var(--accent);
+}
+
+a.btn-link:link {
+  background-color: var(--primary-2);
+  color: var(--secondary);
 }
 
 input.checkbox,

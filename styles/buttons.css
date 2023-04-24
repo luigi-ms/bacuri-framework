@@ -1,0 +1,113 @@
+.button {
+  height: 1.75rem;
+  padding: 0.1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* Simple buttons variants */
+button.btn-primary,
+button.btn-secondary {
+  border-width: 1px;
+  border-style: solid;
+}
+
+a.btn-link {
+  text-decoration: none;
+  padding: 0.2rem;
+}
+
+/* Checkbox button */
+input.checkbox {
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  height: 1.08rem;
+  width: 4.2vw;
+}
+
+input.checkbox::before {
+  content: '';
+  font-weight: bold;
+  position: relative;
+}
+
+input.checkbox:checked::before {
+  content: 'x';
+  bottom: 20%;
+  left: 25%;
+}
+
+/* Radio button */
+input.radio {
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  height: 1.08rem;
+  width: 4.2vw;
+}
+
+input.radio::before {
+  content: '';
+  width: 50%;
+  position: relative;
+}
+
+input.radio:checked::before {
+  content: '•';
+  bottom: 17%;
+  left: 23%;
+}
+
+/* Toggle switch */
+input.switch {
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+input.switch::before {
+  border-radius: 10px;
+  content: '';
+  display: inline-block;
+  width: 70%;
+  height: 1rem;
+  position: relative;
+  right: 40%;
+  bottom: 80%;
+}
+
+input.switch:checked::before {
+  left: 60%;
+}
+
+/* Button group */
+fieldset.button-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+fieldset.vertical-group,
+fieldset.radio-group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+legend.btn-group-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+label.btn-group-item {
+  display: flex;
+  margin-left: 0.5rem;
+  gap: 0.25rem;
+  flex-direction: row-reverse;
+  align-items: center;
+}
