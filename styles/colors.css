@@ -90,3 +90,8 @@ input.radio::before:checked {
   color: var(--primary);
   background: var(--primary);
 }
+
+/* Typography style */
+blockquote.quote {
+  border-left-color: var(--secondary);
+}
