@@ -54,6 +54,13 @@ ul, ol {
     list-style: none;
     display: flex;
     flex-direction: column;
+
+    span.list-title {
+      display: inline;
+      font-size: 1.61rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
   }
 
   &.simple-list {
@@ -62,29 +69,37 @@ ul, ol {
       align-items: center;
 
       &::before {
-        content: "➣";
+        content: "-";
         font-size: 1rem;
         margin-right: 1rem;
+      }
+
+      &:active {
+        font-weight: 700;
+        background-color: c.$lightblue-2;
       }
     }
   }
 
   &.box-list {
     li.list-item {
-      border-bottom: 1px solid c.$darkpurple-1;
-      border-left: 1px solid c.$darkpurple-1;
-      border-right: 1px solid c.$darkpurple-1;
+      border: 1px solid c.$darkpurple-1;
+      border-bottom: none;
       padding: .4rem;
 
-      &:first-child {
-        border-top: 1px solid c.$darkpurple-1;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+      &:nth-of-type(1) {
+        border-radius: 5px 5px 0 0;
       }
 
       &:last-child {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-bottom: 1px solid c.$darkpurple-1;
+        border-radius: 0 0 5px 5px;
+      }
+
+      &:active {
+        background-color: c.$lightblue-2;
+        border-color: c.$green-1;
+        font-weight: 700;
       }
     }
   }
