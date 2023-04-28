@@ -34,11 +34,9 @@ label.form-input {
   textarea.textarea {
     resize: none;
     height: 4rem;
-    border-width: 2px;
-    border-style: solid;
+    border: 2px solid c.$darkpurple-1;
     border-radius: 4px;
     padding: 0.25rem;
-    border-color: c.$darkpurple-1;
     background-color: c.$lightblue-2;
 
     &:focus { outline-color: c.$green-1; }

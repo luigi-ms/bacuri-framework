@@ -3,23 +3,22 @@
 /* Simple buttons variants */
 /* Checkbox button */
 .button {
-	height: 1.75rem;
-	padding: 0.1rem;
-	text-align: center;
-	border-radius: 4px;
-  
+  height: 1.75rem;
+  padding: 0.1rem;
+  text-align: center;
+  border-radius: 4px;
 
   &.btn-primary {
-	  border-width: 1px;
-	  border-style: solid;
+    border-width: 1px;
+    border-style: solid;
     background-color: c.$darkpurple-1;
     color: c.$lightblue-1;
     border-color: transparent;
   }
 
   &.btn-secondary {
-  	border-width: 1px;
-	  border-style: solid;
+    border-width: 1px;
+    border-style: solid;
     background-color: c.$lightblue-1;
     color: c.$darkpurple-1;
     border-color: c.$darkpurple-1;
@@ -35,8 +34,8 @@
 }
 
 a.btn-link {
-	text-decoration: none;
-	padding: 0.2rem;
+  text-decoration: none;
+  padding: 0.2rem;
 
   &:active { color: c.$green-1; }
 
@@ -47,84 +46,82 @@ a.btn-link {
 }
 
 input.checkbox {
-	all: unset;
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 5px;
-	height: 1.08rem;
-	width: 4.2vw;
+  all: unset;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  height: 1.08rem;
+  width: 4.2vw;
   background-color: c.$lightblue-1;
   border-color: c.$darkpurple-1;
 
   &::before {
-		content: '';
-		font-weight: bold;
-		position: relative;
-	}
+    content: '';
+    font-weight: bold;
+    position: relative;
+  }
 
   &:checked {	
     color: c.$lightblue-1;
     background-color: c.$green-1;
     border: 2px solid c.$green-1;
 
-	  &::before {
-			content: 'x';
-			bottom: 20%;
-			left: 25%;
-		}
-	}
+    &::before {
+      content: 'x';
+      bottom: 20%;
+      left: 25%;
+    }
+  }
 }
 
 /* Radio buttons */
 /* Toggle switch  */
 input.radio {
-	all: unset;
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 10px;
-	height: 1.08rem;
-	width: 4.2vw;
+  all: unset;
+  border: 2px solid c.$darkpurple-1;
+  border-radius: 10px;
+  height: 1.08rem;
+  width: 4.2vw;
   background-color: c.$lightblue-1;
-  border-color: c.$darkpurple-1;
 
-	&::before {
-		content: '';
-		width: 50%;
-		position: relative;
-	}
-	
+  &::before {
+    content: '';
+    width: 50%;
+    position: relative;
+  }
+
   &:checked {
     color: c.$lightblue-1;
     background-color: c.$green-1;
     border: 2px solid c.$green-1;
 
-		&::before {
-			content: '•';
-			bottom: 17%;
-			left: 23%;
-		}
-	}
+    &::before {
+      content: '•';
+      bottom: 17%;
+      left: 23%;
+    }
+  }
 }
 
 input.switch {
-	all: unset;
-	border-width: 2px;
-	border: 4px solid c.$darkpurple-1;
+  all: unset;
+  border-width: 2px;
+  border: 4px solid c.$darkpurple-1;
   background-color: c.$darkpurple-1;
 
   &::before {
-		border-radius: 10px;
-		content: '';
-		display: inline-block;
-		width: 70%;
-		height: 1rem;
-		position: relative;
-		bottom: 80%;
+    border-radius: 10px;
+    content: '';
+    display: inline-block;
+    width: 70%;
+    height: 1rem;
+    position: relative;
+    bottom: 80%;
     background-color: c.$darkpurple-1;
     transform: translateX(-15%);
     transition: transform 250ms ease-out;
-	}
-  
+  }
+
   &::checked {
     color: c.$lightblue-1;
     background-color: c.$green-1;
@@ -139,32 +136,32 @@ input.switch {
 
 /* Button group */
 fieldset.button-group {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	justify-content: space-around;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-around;
 
   &.vertical-group {
-	  flex-direction: column;
-	  align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
-
+  
   &.radio-group {
-	  flex-direction: column;
-	  align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
 legend.btn-group-title {
-	margin-bottom: 0.25rem;
-	font-size: 1.2rem;
-	font-weight: bold;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 label.btn-group-item {
-	display: flex;
-	margin-left: 0.5rem;
-	gap: 0.5rem;
-	flex-direction: row-reverse;
-	align-items: center;
+  display: flex;
+  margin-left: 0.5rem;
+  gap: 0.5rem;
+  flex-direction: row-reverse;
+  align-items: center;
 }

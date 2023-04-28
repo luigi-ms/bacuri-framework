@@ -11,6 +11,7 @@
     "sass": "^1.62.1"
   },
   "scripts": {
-    "run-scss": "sass --watch ./scss:./styles"
+    "watch-scss": "sass --watch ./scss:./styles",
+    "run-scss": "sass ./scss:./styles"
   }
 }
