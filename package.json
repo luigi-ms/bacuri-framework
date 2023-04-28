@@ -1,0 +1,16 @@
+{
+  "name": "lss-framework",
+  "version": "0.1.0",
+  "description": "Simple Framework focused on Semantic HTML",
+  "main": "pages/index.html",
+  "repository": "https://github.com/luigi-ms/my-framework",
+  "author": "Luigi Moraes <luigimoraes3@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "private": false,
+  "dependencies": {
+    "sass": "^1.62.1"
+  },
+  "scripts": {
+    "run-scss": "sass --watch ./scss:./styles"
+  }
+}

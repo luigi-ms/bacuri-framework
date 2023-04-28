@@ -1,0 +1,17 @@
+@use "colors" as c;
+
+nav.navbar {}
+
+main.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2%;
+  margin: 1vw;
+  height: 95%;
+  width: 98%;
+  color: c.$darkpurple-2;
+  background-color: c.$lightblue-1;
+}
+
+footer.footer {}

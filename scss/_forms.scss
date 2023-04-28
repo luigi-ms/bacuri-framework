@@ -1,0 +1,47 @@
+@use "colors" as c;
+
+form.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  label.form-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: .5rem;
+
+    span.text-label { font-size: .9rem ; }
+  }
+}
+
+label.form-input {
+  input.text-field {
+	  height: 1.3rem;
+  	border: none;
+	  border-bottom-style: solid;
+	  border-width: 2px;
+	  padding: 0.25rem;
+    border-bottom-color: c.$darkpurple-1;
+    background-color: c.$lightblue-2;
+
+    &:focus {
+      outline: none;
+      border-bottom-color: c.$green-1;
+    }
+  }
+
+  textarea.textarea {
+	  resize: none;
+	  height: 4rem;
+	  border-width: 2px;
+	  border-style: solid;
+	  border-radius: 4px;
+	  border-width: 2px;
+	  padding: 0.25rem;
+    border-color: c.$darkpurple-1;
+    background-color: c.$lightblue-2;
+
+    &:focus { outline-color: c.$green-1; }
+  }
+}

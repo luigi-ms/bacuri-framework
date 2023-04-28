@@ -1,8 +1,0 @@
-input.switch::before {
-  transform: translateX(-15%);
-  transition: transform 250ms ease-out;
-}
-
-input.switch:checked::before {
-  transform: translateX(60%);
-}
