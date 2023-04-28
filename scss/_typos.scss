@@ -1,9 +1,9 @@
 @use "colors" as c;
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Lora&display=swap');
+@use "fonts" as f;
 
 body {
   font-size: 16px;
-  font-family: 'Lato', 'Arial', 'Helvetica', sans-serif;
+  font-family: f.$main-font, 'Arial', 'Helvetica', sans-serif;
   letter-spacing: .025rem;
 }
 
@@ -91,7 +91,7 @@ ul, ol {
 }
 
 /* Styled classes */
-.serifed-text { font-family: 'Lora', serif; }
+.serifed-text { font-family: f.$variant-font, serif; }
 
 .lighter-text { font-weight: 300; }
 
