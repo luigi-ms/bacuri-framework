@@ -32,6 +32,7 @@ específica, e as Style Classes, classes genéricas que podem estilizar qualquer
 ## Tecnologias
 - HTML5
 - CSS3
+- SCSS
 - Javascript
 
 ## Autor
