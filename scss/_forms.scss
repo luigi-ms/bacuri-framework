@@ -1,4 +1,5 @@
-@use "colors" as c;
+@use "_colors";
+@use "_variables" as vars;
 
 form.form {
   display: grid;
@@ -19,26 +20,24 @@ label.form-input {
   input.text-field {
     height: 1.3rem;
     border: none;
-    border-bottom-style: solid;
-    border-width: 2px;
-    padding: 0.25rem;
-    border-bottom-color: c.$darkpurple-1;
-    background-color: c.$lightblue-2;
+    border-bottom: 2px solid colors.$darkpurple-1;
+    padding: .25rem;
+    background-color: colors.$lightblue-2;
 
     &:focus {
       outline: none;
-      border-bottom-color: c.$green-1;
+      border-bottom-color: colors.$green-1;
     }
   }
 
   textarea.textarea {
     resize: none;
     height: 4rem;
-    border: 2px solid c.$darkpurple-1;
-    border-radius: 4px;
-    padding: 0.25rem;
-    background-color: c.$lightblue-2;
+    border: 2px solid colors.$darkpurple-1;
+    border-radius: vars.$border-slightly-rounded;
+    padding: .25rem;
+    background-color: colors.$lightblue-2;
 
-    &:focus { outline-color: c.$green-1; }
+    &:focus { outline-color: colors.$green-1; }
   }
 }

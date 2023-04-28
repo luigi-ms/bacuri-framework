@@ -1,4 +1,4 @@
-@use "colors" as c;
+@use "_colors";
 
 nav.navbar {}
 
@@ -10,8 +10,8 @@ main.main {
   margin: 1vw;
   height: 95%;
   width: 98%;
-  color: c.$darkpurple-2;
-  background-color: c.$lightblue-1;
+  color: colors.$darkpurple-2;
+  background-color: colors.$lightblue-1;
 }
 
 footer.footer {}

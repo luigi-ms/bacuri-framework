@@ -1,4 +1,5 @@
-@use "colors" as c;
+@use "_colors";
+@use "_variables" as vars;
 
 /* Simple buttons variants */
 /* Checkbox button */
@@ -6,25 +7,25 @@
   height: 1.75rem;
   padding: .1rem;
   text-align: center;
-  border-radius: 4px;
+  border-radius: vars.$border-slightly-rounded;
 
   &.btn-primary {
     border: 1px solid transparent;
-    background-color: c.$darkpurple-1;
-    color: c.$lightblue-1;
+    background-color: colors.$darkpurple-1;
+    color: colors.$lightblue-1;
   }
 
   &.btn-secondary {
-    border: 1px solid c.$darkpurple-1;
-    background-color: c.$lightblue-1;
-    color: c.$darkpurple-1;
+    border: 1px solid colors.$darkpurple-1;
+    background-color: colors.$lightblue-1;
+    color: colors.$darkpurple-1;
   }
 
   &.btn-primary, &.btn-secondary {
     &:active {
-      background-color: c.$green-1;
-      color: c.$lightblue-1;
-      border-color: c.$green-1;
+      background-color: colors.$green-1;
+      color: colors.$lightblue-1;
+      border-color: colors.$green-1;
     }
   }
 }
@@ -33,32 +34,32 @@ a.btn-link {
   text-decoration: none;
   padding: .2rem;
 
-  &:active { color: c.$green-1; }
+  &:active { color: colors.$green-1; }
 
   &:link {
-    background-color: c.$lightblue-2;
-    color: c.$darkpurple-1;
+    background-color: colors.$lightblue-2;
+    color: colors.$darkpurple-1;
   }
 }
 
 input.checkbox {
   all: unset;
-  border: 2px solid c.$darkpurple-1;
-  border-radius: 5px;
+  border: 2px solid colors.$darkpurple-1;
+  border-radius: vars.$border-slightly-rounded;
   height: 1.08rem;
   width: 4.2vw;
-  background-color: c.$lightblue-1;
+  background-color: colors.$lightblue-1;
 
   &::before {
     content: '';
-    font-weight: bold;
+    font-weight: vars.$bolder-text;
     position: relative;
   }
 
   &:checked {	
-    color: c.$lightblue-1;
-    background-color: c.$green-1;
-    border: 2px solid c.$green-1;
+    color: colors.$lightblue-1;
+    background-color: colors.$green-1;
+    border: 2px solid colors.$green-1;
 
     &::before {
       content: 'x';
@@ -72,11 +73,11 @@ input.checkbox {
 /* Toggle switch  */
 input.radio {
   all: unset;
-  border: 2px solid c.$darkpurple-1;
-  border-radius: 10px;
+  border: 2px solid colors.$darkpurple-1;
+  border-radius: vars.$border-rounded;
   height: 1.08rem;
   width: 4.2vw;
-  background-color: c.$lightblue-1;
+  background-color: colors.$lightblue-1;
 
   &::before {
     content: '';
@@ -85,9 +86,9 @@ input.radio {
   }
 
   &:checked {
-    color: c.$lightblue-1;
-    background-color: c.$green-1;
-    border: 2px solid c.$green-1;
+    color: colors.$lightblue-1;
+    background-color: colors.$green-1;
+    border: 2px solid colors.$green-1;
 
     &::before {
       content: '•';
@@ -99,30 +100,32 @@ input.radio {
 
 input.switch {
   all: unset;
-  border: 2px solid c.$darkpurple-1;
-  border-radius: 5px;
-  background-color: c.$darkpurple-1;
+  width: 2rem;
+  height: .5rem;
+  border: 2px solid colors.$darkpurple-1;
+  border-radius: vars.$border-slightly-rounded;
+  background-color: colors.$darkpurple-1;
 
   &::before {
-    border-radius: 10px;
+    border-radius: vars.$border-rounded;
     content: '';
     display: inline-block;
     width: 70%;
     height: 1rem;
     position: relative;
     bottom: 80%;
-    background-color: c.$darkpurple-1;
+    background-color: colors.$darkpurple-1;
     transform: translateX(-15%);
     transition: transform 250ms ease-out;
   }
 
   &:checked {
-    color: c.$lightblue-1;
-    background-color: c.$green-1;
-    border: 2px solid c.$green-1;
+    color: colors.$lightblue-1;
+    background-color: colors.$green-1;
+    border: 2px solid colors.$green-1;
 
     &::before {
-      background-color: c.$green-1;
+      background-color: colors.$green-1;
       transform: translateX(60%);
     }
   }
@@ -149,7 +152,7 @@ fieldset.button-group {
 legend.btn-group-title {
   margin-bottom: .25rem;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: vars.$bolder-text;
 }
 
 label.btn-group-item {
