@@ -1,24 +1,32 @@
-@use "colors" as c;
-@use "fonts" as f;
+@use "colors";
+@use "fonts";
+@use "sass:math";
+
+$value: 5.61rem;
 
 body {
   font-size: 16px;
-  font-family: f.$main-font, 'Arial', 'Helvetica', sans-serif;
+  font-family: fonts.$main-font, 'Arial', 'Helvetica', sans-serif;
   letter-spacing: .025rem;
 }
 
-.h1 { font-size: 4.83rem; }
-.h2 { font-size: 4.02rem; }
-.h3 { font-size: 3.22rem; }
-.h4 { font-size: 2.41rem; }
-.h5 { font-size: 1.61rem; }
-.h6 { font-size: .8rem; }
+@function decreaseFontSize($fontSize) {
+  $value: math.div($fontSize, 1.1618) !global;
+  @return $value;
+}
+
+@for $index from 1 through 6 {
+  .h#{$index} {
+    font-size: decreaseFontSize($value);
+  }
+}
 
 main {
-  > h1, > h2, > h3,
-  > h4, > h5, > h6 {
-    margin-top: .5rem;
-    margin-bottom: -0.5rem;
+  @for $index from 1 through 6 {
+    > h#{$index} {
+      margin-top: .5rem;
+      margin-bottom: -0.5rem;
+    }
   }
 }
 
@@ -36,8 +44,7 @@ p {
 
 blockquote.quote {
   padding: .75rem;
-  border-left-style: solid;
-  border-left-color: c.$darkpurple-1;
+  border-left: .25rem solid colors.$darkpurple-1;
   border-radius: 5px;
 
   span.quote-author {
@@ -70,20 +77,19 @@ ul, ol {
 
       &::before {
         content: "-";
-        font-size: 1rem;
         margin-right: 1rem;
       }
 
       &:active {
         font-weight: 700;
-        background-color: c.$lightblue-2;
+        background-color: colors.$lightblue-2;
       }
     }
   }
 
   &.box-list {
     li.list-item {
-      border: 1px solid c.$darkpurple-1;
+      border: 1px solid colors.$darkpurple-1;
       border-bottom: none;
       padding: .4rem;
 
@@ -92,13 +98,13 @@ ul, ol {
       }
 
       &:last-child {
-        border-bottom: 1px solid c.$darkpurple-1;
+        border-bottom: 1px solid colors.$darkpurple-1;
         border-radius: 0 0 5px 5px;
       }
 
       &:active {
-        background-color: c.$lightblue-2;
-        border-color: c.$green-1;
+        background-color: colors.$lightblue-2;
+        border-color: colors.$green-1;
         font-weight: 700;
       }
     }
@@ -106,7 +112,7 @@ ul, ol {
 }
 
 /* Styled classes */
-.serifed-text { font-family: f.$variant-font, serif; }
+.serifed-text { font-family: fonts.$variant-font, serif; }
 
 .lighter-text { font-weight: 300; }
 
