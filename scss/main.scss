@@ -1,8 +1,8 @@
-@use "_medias";
-@use "_typos";
-@use "layout";
-@use "buttons";
-@use "forms";
+@use "utils/medias";
+@use "components/typos";
+@use "components/layout";
+@use "components/buttons";
+@use "components/forms";
 
 * {
   margin: 0;

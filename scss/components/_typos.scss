@@ -1,6 +1,6 @@
-@use "_colors";
-@use "_fonts";
-@use "_variables" as vars;
+@use "../utils/colors";
+@use "../utils/fonts";
+@use "../utils/variables" as vars;
 @use "sass:math";
 
 $value: 5.61rem;
