@@ -1,17 +1,40 @@
 @use "../utils/colors";
 
-nav.navbar {}
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: "navbar"
+                        "main"
+                        "footer";
+}
 
-main.main {
+nav.nav-bar, 
+main.main-content, 
+footer.footer-section {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   padding: 2%;
-  margin: 1vw;
-  height: 95%;
   width: 98%;
+}
+
+nav.nav-bar {
+  grid-area: 'navbar';
+  background-color: colors.$lightblue-2;
+}
+
+main.main-content {
+  grid-area: 'main';
+  margin: 1vw;
+  fill: colors.$lightblue-1;
   color: colors.$darkpurple-2;
   background-color: colors.$lightblue-1;
 }
 
-footer.footer {}
+footer.footer-section {
+  grid-area: 'footer';
+  position: fixed;
+  bottom: 0;
+  background-color: colors.$lightblue-2;
+}
