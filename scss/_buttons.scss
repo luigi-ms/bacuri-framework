@@ -100,8 +100,8 @@ input.radio {
 
 input.switch {
   all: unset;
-  width: 2rem;
-  height: .5rem;
+  width: 1.75rem;
+  height: .45rem;
   border: 2px solid colors.$darkpurple-1;
   border-radius: vars.$border-slightly-rounded;
   background-color: colors.$darkpurple-1;
@@ -110,8 +110,8 @@ input.switch {
     border-radius: vars.$border-rounded;
     content: '';
     display: inline-block;
-    width: 70%;
-    height: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
     position: relative;
     bottom: 80%;
     background-color: colors.$darkpurple-1;
