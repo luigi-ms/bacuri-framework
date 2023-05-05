@@ -1,40 +1,67 @@
-@use "../utils/colors";
+@use "../core/colors";
 
 body {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(3, fit-content(max-height));
+  justify-items: center;
   grid-template-areas: "navbar"
                         "main"
                         "footer";
+  background-color: colors.$lightblue-1;
 }
 
 nav.nav-bar, 
 main.main-content, 
 footer.footer-section {
+  color: colors.$darkpurple-2;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   padding: 2%;
-  width: 98%;
+  width: 100vw;
 }
 
 nav.nav-bar {
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  height: 10vh;
   grid-area: 'navbar';
   background-color: colors.$lightblue-2;
+  
+  .nav-title {
+    font-size: 1.62rem;
+  }
 }
 
 main.main-content {
+  $column-length: calc(16.66% - .55rem);
+
   grid-area: 'main';
-  margin: 1vw;
-  fill: colors.$lightblue-1;
-  color: colors.$darkpurple-2;
-  background-color: colors.$lightblue-1;
+  grid-template-columns: repeat(6, minmax($column-length, 1fr));
+  column-gap: .55rem;
+  row-gap: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: .85rem;
+
+  > * { border: 3px solid orange; }
+
+  @for $index from 1 through 6 {
+    .cols-#{$index} {
+      grid-column: 1/calc($index + 1);
+    }
+  }
+
+  .half-width { grid-column: 1/4; } 
+  .full-width { grid-column: 1/7; }
 }
 
 footer.footer-section {
+  height: 10vh;
   grid-area: 'footer';
-  position: fixed;
+  position: absolute;
   bottom: 0;
   background-color: colors.$lightblue-2;
 }
