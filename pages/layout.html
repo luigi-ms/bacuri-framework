@@ -16,35 +16,39 @@
     </nav>
 
     <main class="main-content">
-      <h1 class="h4 full-width">LSS - Layout</h1>
+      <h1 class="h4">LSS - Layout</h1>
 
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
-      <span>5</span>
-      <span>6</span>
-      <span>7</span>
-      <span>8</span>
-      <span>9</span>
-      <span>10</span>
-      <span>11</span>
-      <span>12</span>
+      <h3 class="h6">Main-Content</h3>
+      <p>
+        This framework uses flexbox layout for simplification, and by default
+        every element inside the container occupies the whole width. In case of separate the
+        elements in columns, is recommended to use the section tag.
+      </p>
 
-      <h3 class="h5 full-width">Helper classes</h3>
-      <p class="full-width">.full-width fills all columns</p>
-      <span class="half-width">.half-width fills half of columns</span>
+      <h3 class="h6">Grid-Content</h3>
+      <p>
+        The section creates an one-row grid with 6 columns max. You need to tell
+        how many columns your elements will ocuppy, importing these following
+        classes.
+      </p>
 
-      <span class="cols-1">.col-1</span><br />
-      <span class="cols-2">.col-2</span><br />
-      <span class="cols-3">.col-3</span><br />
-      <span class="cols-4">.col-4</span><br />
-      <span class="cols-5">.col-5</span><br />
-      <span class="cols-6">.col-6</span><br />
+      <section class="grid-content">
+        <span class="cols-1">.cols-1</span>
+        <span class="cols-2">.cols-2</span>
+        <span class="cols-3">.cols-3</span>
+        <span class="cols-4">.cols-4</span>
+        <span class="cols-5">.cols-5</span>
+        <span class="cols-6">.cols-6</span>
+      </section>
+
+      <h3 class="h6">Helper classes</h3>
+      <span class="half-width">.half-width fills half of the container width</span>
     </main>
 
     <footer class="footer-section">
-      <h3 class="h5">Footer</h3>
+      <h3 class="h5">Footer-Section</h3>
+      <p>The footer behaves like main, but all elements are
+       horizontally centralized.</p>
     </footer>
 
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>

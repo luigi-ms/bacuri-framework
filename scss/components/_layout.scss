@@ -12,67 +12,70 @@ body {
   background-color: colors.$lightblue-1;
 }
 
-nav.nav-bar,
-main.main-content,
-footer.footer-section {
-  color: colors.$darkpurple-2;
+nav.nav-bar {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  padding: 2%;
-  width: 100vw;
-}
-
-nav.nav-bar {
   grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: 1fr;
+  grid-area: "navbar";
+  gap: 1.5rem;
   align-items: center;
   height: 10vh;
-  grid-area: "navbar";
+  width: 100vw;
+  padding: 2%;
   background-color: colors.$lightblue-2;
+  color: colors.$darkpurple-2;
 
   .nav-title {
     font-size: 1.62rem;
   }
 }
 
-main.main-content {
-  $column-length: calc(16.66% - 0.55rem);
-
+main.main-content,
+footer.footer-section {
   grid-area: "main";
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(6, minmax($column-length, 1fr));
-  grid-auto-flow: row;
-  column-gap: 0.55rem;
+  display: flex;
+  flex-direction: column;
   row-gap: 1rem;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-evenly;
   padding: 0.85rem;
+  color: colors.$darkpurple-2;
+  width: 100vw;
 
   > * {
-    border: 3px solid orange;
+    width: 100%;
     word-wrap: break-word;
   }
 
-  @for $index from 1 through 6 {
-    .cols-#{$index} {
-      grid-column: 1 / calc($index + 1);
-    }
+  .half-width {
+    width: 50%;
   }
 
-  .half-width {
-    grid-column: 1/4;
-  }
-  .full-width,
-  > * {
-    grid-column: 1/7;
+  section.grid-content {
+    $column-length: calc(16.66% - 0.55rem);
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, $column-length);
+    column-gap: 0.55rem;
+    row-gap: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @for $index from 1 through 6 {
+      .cols-#{$index} {
+        grid-column: 1 / calc($index + 1);
+      }
+    }
   }
 }
 
 footer.footer-section {
-  height: 10vh;
+  height: 15vh;
   grid-area: "footer";
-  /*position: absolute ;*/
-  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
   background-color: colors.$lightblue-2;
 }
