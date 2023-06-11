@@ -5,14 +5,15 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, fit-content(max-height));
   justify-items: center;
-  grid-template-areas: "navbar"
-                        "main"
-                        "footer";
+  grid-template-areas:
+    "navbar"
+    "main"
+    "footer";
   background-color: colors.$lightblue-1;
 }
 
-nav.nav-bar, 
-main.main-content, 
+nav.nav-bar,
+main.main-content,
 footer.footer-section {
   color: colors.$darkpurple-2;
   display: grid;
@@ -27,41 +28,51 @@ nav.nav-bar {
   grid-template-rows: 1fr;
   align-items: center;
   height: 10vh;
-  grid-area: 'navbar';
+  grid-area: "navbar";
   background-color: colors.$lightblue-2;
-  
+
   .nav-title {
     font-size: 1.62rem;
   }
 }
 
 main.main-content {
-  $column-length: calc(16.66% - .55rem);
+  $column-length: calc(16.66% - 0.55rem);
 
-  grid-area: 'main';
+  grid-area: "main";
+  grid-template-rows: 1fr;
   grid-template-columns: repeat(6, minmax($column-length, 1fr));
-  column-gap: .55rem;
+  grid-auto-flow: row;
+  column-gap: 0.55rem;
   row-gap: 1rem;
   align-items: center;
   justify-content: space-evenly;
-  padding: .85rem;
+  padding: 0.85rem;
 
-  > * { border: 3px solid orange; }
+  > * {
+    border: 3px solid orange;
+    word-wrap: break-word;
+  }
 
   @for $index from 1 through 6 {
     .cols-#{$index} {
-      grid-column: 1/calc($index + 1);
+      grid-column: 1 / calc($index + 1);
     }
   }
 
-  .half-width { grid-column: 1/4; } 
-  .full-width { grid-column: 1/7; }
+  .half-width {
+    grid-column: 1/4;
+  }
+  .full-width,
+  > * {
+    grid-column: 1/7;
+  }
 }
 
 footer.footer-section {
   height: 10vh;
-  grid-area: 'footer';
-  position: absolute;
+  grid-area: "footer";
+  /*position: absolute ;*/
   bottom: 0;
   background-color: colors.$lightblue-2;
 }

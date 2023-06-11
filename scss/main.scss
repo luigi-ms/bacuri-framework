@@ -2,7 +2,6 @@
 @use "components/typos";
 @use "components/layout";
 @use "components/buttons";
-@use "components/forms";
 @import "../normalize.css";
 
 * {
@@ -10,4 +9,4 @@
   padding: 0;
   border: none;
   box-sizing: border-box;
-} 
+}

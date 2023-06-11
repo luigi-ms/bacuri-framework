@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>LSS - Typography</title>
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
     <main class="main-content">
-      <h1 class="h4">LSS - Typography</h1>
+      <h1 class="h4 half-width">LSS - Typography</h1>
 
+      <span class="cols-3">teste</span>
+      <span class="cols-2">teste</span>
       <h2 class="h5">Headers</h2>
       <header class="header">
         <h1 class="h1">Header 1</h1>
@@ -21,7 +26,12 @@
       </header>
 
       <h2 class="h5">Paragraphs</h2>
-      <p class="long-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat quis libero vestibulum hendrerit at vitae magna. Donec ac mi lorem. Proin nec felis et odio blandit pellentesque. Duis posuere massa eget nisl vulputate dictum.</p>
+      <p class="long-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel erat
+        quis libero vestibulum hendrerit at vitae magna. Donec ac mi lorem.
+        Proin nec felis et odio blandit pellentesque. Duis posuere massa eget
+        nisl vulputate dictum.
+      </p>
 
       <h2 class="h5">Styled text</h2>
       <span class="serifed-text">Using serif font</span>
@@ -32,8 +42,10 @@
 
       <h2 class="h5">Blockquote</h2>
       <blockquote class="quote">
-        <p class="quote-text">Patience you must have, my young Padawan.<p>
-        <span class="quote-author">Master Yoda</span>
+        <p class="quote-text">Patience you must have, my young Padawan.</p>
+        <p>
+          <span class="quote-author">Master Yoda</span>
+        </p>
       </blockquote>
 
       <h2 class="h5">Lists</h2>
@@ -57,7 +69,9 @@
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
+    <script>
+      eruda.init();
+    </script>
 
     <script src="../scripts/main.js"></script>
   </body>

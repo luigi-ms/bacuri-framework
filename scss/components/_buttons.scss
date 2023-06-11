@@ -5,7 +5,7 @@
 /* Checkbox button */
 .button {
   height: 1.75rem;
-  padding: .1rem;
+  padding: 0.1rem;
   text-align: center;
   border-radius: vars.$border-slightly-rounded;
 
@@ -21,7 +21,8 @@
     color: colors.$darkpurple-1;
   }
 
-  &.btn-primary, &.btn-secondary {
+  &.btn-primary,
+  &.btn-secondary {
     &:active {
       background-color: colors.$green-1;
       color: colors.$lightblue-1;
@@ -32,9 +33,11 @@
 
 a.btn-link {
   text-decoration: none;
-  padding: .2rem;
+  padding: 0.2rem;
 
-  &:active { color: colors.$green-1; }
+  &:active {
+    color: colors.$green-1;
+  }
 
   &:link {
     background-color: colors.$lightblue-2;
@@ -51,18 +54,18 @@ input.checkbox {
   background-color: colors.$lightblue-1;
 
   &::before {
-    content: '';
+    content: "";
     font-weight: vars.$bolder-text;
     position: relative;
   }
 
-  &:checked {	
+  &:checked {
     color: colors.$lightblue-1;
     background-color: colors.$green-1;
     border: 2px solid colors.$green-1;
 
     &::before {
-      content: 'x';
+      content: "x";
       bottom: 20%;
       left: 25%;
     }
@@ -80,7 +83,7 @@ input.radio {
   background-color: colors.$lightblue-1;
 
   &::before {
-    content: '';
+    content: "";
     width: 50%;
     position: relative;
   }
@@ -91,7 +94,7 @@ input.radio {
     border: 2px solid colors.$green-1;
 
     &::before {
-      content: '•';
+      content: "•";
       bottom: 17%;
       left: 23%;
     }
@@ -101,14 +104,14 @@ input.radio {
 input.switch {
   all: unset;
   width: 1.75rem;
-  height: .45rem;
+  height: 0.45rem;
   border: 2px solid colors.$darkpurple-1;
   border-radius: vars.$border-slightly-rounded;
   background-color: colors.$darkpurple-1;
 
   &::before {
     border-radius: vars.$border-rounded;
-    content: '';
+    content: "";
     display: inline-block;
     width: 1.2rem;
     height: 1.2rem;
@@ -142,7 +145,7 @@ fieldset.button-group {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   &.radio-group {
     flex-direction: column;
     align-items: flex-start;
@@ -150,15 +153,15 @@ fieldset.button-group {
 }
 
 legend.btn-group-title {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
   font-size: 1.2rem;
   font-weight: vars.$bolder-text;
 }
 
 label.btn-group-item {
   display: flex;
-  margin-left: .5rem;
-  gap: .5rem;
+  margin-left: 0.5rem;
+  gap: 0.5rem;
   flex-direction: row-reverse;
   align-items: center;
 }

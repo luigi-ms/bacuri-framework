@@ -7,8 +7,8 @@ $value: 5.61rem;
 
 body {
   font-size: 16px;
-  font-family: fonts.$main-font, 'Arial', 'Helvetica', sans-serif;
-  letter-spacing: .025rem;
+  font-family: fonts.$main-font, "Arial", "Helvetica", sans-serif;
+  letter-spacing: 0.025rem;
 }
 
 @function decreaseFontSize($fontSize) {
@@ -25,7 +25,7 @@ body {
 main {
   @for $index from 1 through 6 {
     > h#{$index} {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       margin-bottom: -0.5rem;
     }
   }
@@ -40,12 +40,14 @@ p {
     word-wrap: break-word;
   }
 
-  &.quote-text { font-style: italic; }
+  &.quote-text {
+    font-style: italic;
+  }
 }
 
 blockquote.quote {
-  padding: .75rem;
-  border-left: .25rem solid colors.$darkpurple-1;
+  padding: 0.75rem;
+  border-left: 0.25rem solid colors.$darkpurple-1;
   border-radius: vars.$border-slightly-rounded;
 
   span.quote-author {
@@ -54,10 +56,11 @@ blockquote.quote {
   }
 }
 
-ul, ol {
+ul,
+ol {
   &.simple-list,
   &.box-list {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     max-width: 50vw;
     list-style: none;
     display: flex;
@@ -92,7 +95,7 @@ ul, ol {
     li.list-item {
       border: 1px solid colors.$darkpurple-1;
       border-bottom: none;
-      padding: .4rem;
+      padding: 0.4rem;
 
       &:nth-of-type(1) {
         border-radius: repeat(2, vars.$border-slightly-rounded) repeat(2, 0);
@@ -113,12 +116,22 @@ ul, ol {
 }
 
 /* Styled classes */
-.serifed-text { font-family: fonts.$variant-font, serif; }
+.serifed-text {
+  font-family: fonts.$variant-font, serif;
+}
 
-.lighter-text { font-weight: 300; }
+.lighter-text {
+  font-weight: 300;
+}
 
-.bolder-text { font-weight: 700; }
+.bolder-text {
+  font-weight: 700;
+}
 
-.italic-text { font-style: italic; }
+.italic-text {
+  font-style: italic;
+}
 
-.underlined-text { text-decoration: underline; }
+.underlined-text {
+  text-decoration: underline;
+}
