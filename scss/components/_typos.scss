@@ -3,7 +3,7 @@
 @use "../core/variables" as vars;
 @use "sass:math";
 
-$value: 5.61rem;
+$headerFontSize: 4.5rem;
 
 body {
   font-size: 16px;
@@ -11,30 +11,26 @@ body {
   letter-spacing: 0.025rem;
 }
 
-@function decreaseFontSize($fontSize) {
-  $value: math.div($fontSize, 1.1618) !global;
-  @return $value;
+@function decreaseFontSize($size) {
+  $headerFontSize: math.div($size, 1.1618) !global;
+  @return $headerFontSize;
 }
 
 @for $index from 1 through 6 {
   .h#{$index} {
-    font-size: decreaseFontSize($value);
+    font-size: decreaseFontSize($headerFontSize);
   }
 }
 
 main {
   @for $index from 1 through 6 {
-    > h#{$index} {
-      margin-top: 0.5rem;
-      margin-bottom: -0.5rem;
+    h#{$index} {
+      margin-block: 0.3rem;
     }
   }
 }
 
 p {
-  text-align: justify;
-  text-justify: inter-word;
-
   &.long-text {
     line-height: 1.48rem;
     word-wrap: break-word;
@@ -120,12 +116,17 @@ ol {
   font-family: fonts.$variant-font, serif;
 }
 
+.centralized-text {
+  text-align: center;
+  justify-self: center;
+}
+
 .lighter-text {
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .bolder-text {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .italic-text {
