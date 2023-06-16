@@ -1,11 +1,27 @@
 # LSS Framework
 
-:construction: Em construção :construction:
+:warning: Em construção. Projeto ainda não finalizado para produção. :warning:
 
-## Descrição
+## Sobre
 
 Este framework é um pequeno projeto meu baseado nos frameworks Vuetify e Bootstrap.
-Meu objetivo com este projeto é aprender CSS3 e Javascript mais a fundo.</br>
+Criei este projeto com o foco em aprender CSS3 e Javascript mais a fundo.</br>
+
+## Instalação
+
+LSS é dividido em dois pacotes Node, o Core(que é este repositorio)
+e o Add-on Manager(link a seguir)
+
+### Node
+
+Instale o pacote lss usando seu package manager favorito
+
+```bash
+yarn add lss
+yarn add lss/addons
+```
+
+<a href="https://github.com/luigi-ms/lss-addons-sys">Add-on Manager</a>
 
 ## HTML Semântico
 
