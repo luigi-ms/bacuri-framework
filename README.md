@@ -1,6 +1,6 @@
-# LSS Framework
+# TagSS Framework
 
-:warning: Em construção. Projeto ainda não finalizado para produção. :warning:
+:warning: Em construção. Projeto não finalizado. :warning:
 
 ## Sobre
 
@@ -9,7 +9,7 @@ Criei este projeto com o foco em aprender CSS3 e Javascript mais a fundo.</br>
 
 ## Instalação
 
-LSS é dividido em dois pacotes Node, o Core(que é este repositorio)
+TagSS é dividido em dois pacotes Node, o Core(que é este repositorio)
 e o Add-on Manager(link a seguir)
 
 ### Node
