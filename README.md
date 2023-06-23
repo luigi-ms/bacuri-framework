@@ -4,40 +4,40 @@
 
 ## Sobre
 
-Este framework é um pequeno projeto meu baseado nos frameworks Vuetify e Bootstrap.
-Criei este projeto com o foco em aprender CSS3 e Javascript mais a fundo.</br>
+TagSS é hm framework minimalista que faz uso de Material Design, e que possui
+um sistema de Plugins para aumentar suas capacidades.
 
 ## Instalação
 
 TagSS é dividido em dois pacotes Node, o Core(que é este repositorio)
-e o Add-on Manager(link a seguir)
-
-### Node
-
-Instale o pacote lss usando seu package manager favorito
+e o Plugin Manager(link a seguir).
+Instale o pacote tagss usando Node:
 
 ```bash
-yarn add lss
-yarn add lss/addons
+yarn add tagss
+yarn add tagss-plugins
 ```
 
-<a href="https://github.com/luigi-ms/lss-addons-sys">Add-on Manager</a>
+[Plugin Manager](https://github.com/luigi-ms/lss-addons-sys)
+
+## Plugins
+
+O TagSS basicamente adiciona uma paleta de cores, uma tipografia, estilizar
+os botões e um flex layout à sua página. Qualquer código CSS/Sass que não
+interfira na estilização trazida pelo framework pode ser adicionado manualmente,
+mas há também um sistema de plugins para caso queira uma estilização que demande
+mais código.
 
 ## HTML Semântico
 
-O uso de HTML Semântico é necessário para usar o framework.
-
-## Classes
-
-Há dois tipos de classes: as Component Classes, que devem estar ligadas a uma tag html
-específica, e as Style Classes, classes genéricas que podem estilizar qualquer componente.
+Muitas das classes estão ligadas diretamente a uma tag html5 específica,
+então o entendimento de HTML Semântico é necessário para usar este framework.
 
 ## Tecnologias
 
 -   HTML5
--   CSS3
 -   SCSS
--   Javascript
+-   Node.js
 
 ## Autor
 
