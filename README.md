@@ -4,25 +4,25 @@
 
 ## Sobre
 
-TagSS é hm framework minimalista que faz uso de Material Design, e que possui
+CocaiSS é um framework minimalista que faz uso de Material Design, e que possui
 um sistema de Plugins para aumentar suas capacidades.
 
 ## Instalação
 
-TagSS é dividido em dois pacotes Node, o Core(que é este repositorio)
+CocaiSS é dividido em dois pacotes Node, o Core(que é este repositorio)
 e o Plugin Manager(link a seguir).
 Instale o pacote tagss usando Node:
 
 ```bash
-yarn add tagss
-yarn add tagss-plugins
+yarn add cocaiss
+yarn add cocaiss-plugins
 ```
 
-[Plugin Manager](https://github.com/luigi-ms/lss-addons-sys)
+[Plugin Manager]()
 
 ## Plugins
 
-O TagSS basicamente adiciona uma paleta de cores, uma tipografia, estilizar
+O CocaiSS basicamente adiciona uma paleta de cores, uma tipografia, estilizar
 os botões e um flex layout à sua página. Qualquer código CSS/Sass que não
 interfira na estilização trazida pelo framework pode ser adicionado manualmente,
 mas há também um sistema de plugins para caso queira uma estilização que demande
