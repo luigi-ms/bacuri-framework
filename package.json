@@ -1,17 +1,20 @@
 {
-  "name": "tagss-framework",
-  "version": "0.1.0",
+  "name": "cocaiss-framework",
+  "version": "0.1.0-alpha",
   "description": "Simple Framework focused on Semantic HTML",
   "main": "pages/index.html",
-  "repository": "https://github.com/luigi-ms/my-framework",
-  "author": "Luigi Moraes <luigimoraes3@gmail.com>",
-  "license": "GPL-3.0-or-later",
-  "private": false,
+  "repository": "https://github.com/luigi-ms/cocaiss-framework",
+  "author": "Luigi Moraes <luigimoraessantos@gmail.com>",
+  "license": "MIT",
   "dependencies": {
+    "hosted-git-info": "^7.0.2",
     "sass": "^1.62.1"
   },
   "scripts": {
     "watch-scss": "sass --watch ./scss:./styles",
     "run-scss": "sass ./scss:./styles"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
   }
 }
