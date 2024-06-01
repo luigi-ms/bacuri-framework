@@ -3,13 +3,12 @@
 
 import * as readline from "readline";
 import {
-//  erasePlugin,
 //  existsInLocal,
-  existsInRemote,
-//  updatePlugin,
+  existsInRemote
 } from "./operations";
-import downloadPlugin from "./operations/download";
+import PlugInList from "./classes/PlugInList";
 
+const list: PlugInList = new PlugInList();
 const r = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -30,7 +29,9 @@ r.question("(option plugin)= ", (answer: string) => {
     console.log("Please wait while we look for this it");
     if (existsInRemote(pluginName)) {
       console.log("Downloading...");
-      downloadPlugin(pluginName);
+      list.add(pluginName)
+        .then(() => console.log("Success!"))
+        .catch(rej => console.error(`${rej}`));
     } else {
       console.error(`Sorry, look like ${pluginName} is not available :(`);
     }

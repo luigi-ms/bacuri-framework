@@ -8,7 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "hosted-git-info": "^7.0.2",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "uuid": "^9.0.1"
   },
   "scripts": {
     "watch-scss": "sass --watch ./scss:./styles",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@types/hosted-git-info": "^3.0.5",
     "@types/node": "^20.13.0",
+    "@types/uuid": "^9.0.8",
     "typescript": "^5.4.5"
   }
 }
