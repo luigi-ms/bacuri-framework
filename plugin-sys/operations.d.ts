@@ -1,7 +1,5 @@
 import PlugIn from "./classes/PlugIn";
-
-declare function downloadPlugin(pluginName: string): PlugIn;
-declare function updatePlugin(pluginName: string): PlugIn;
-declare function erasePlugin(): void;
-declare function existsInLocal(pluginName: string): boolean;
-declare function existsInRemote(pluginName: string): boolean;
+export declare function updatePlugin(pluginName: string): PlugIn;
+export declare function erasePlugin(): void;
+export declare function existsInLocal(pluginName: string): boolean;
+export declare function existsInRemote(pluginName: string): boolean;
