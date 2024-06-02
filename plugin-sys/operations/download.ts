@@ -1,6 +1,12 @@
-import { spawn } from "child_process";
+import { exec } from "child_process";
 import { promises } from "fs";
-import PlugIn from "../classes/PlugIn";
+import util from "util";
+import {
+  Exception,
+  ReadFileException,
+  DownloadException,
+  GenericException,
+} from "../exceptions";
 
 type InfoJSON = {
   name: string;
@@ -10,7 +16,7 @@ type InfoJSON = {
   stylePath: string;
 };
 
-async function readInfoFile(pluginName: string): Promise<InfoJSON> {
+export async function readInfoFile(pluginName: string): Promise<InfoJSON> {
   const folderPath: string = `installed/${pluginName.split("/")[1]}`;
   let handler;
 
@@ -20,35 +26,36 @@ async function readInfoFile(pluginName: string): Promise<InfoJSON> {
     const json: InfoJSON = await JSON.parse(reader);
 
     return json;
-  } catch (err) {
-    throw new Error(`Error: ${err}`);
+  } catch (err: any) {
+    const details: string = err ? err.message : "";
+
+    throw new ReadFileException(details);
   } finally {
     handler?.close();
   }
 }
 
-export default async function downloadPlugin(
+export async function downloadPlugin(
   pluginName: string
-): Promise<PlugIn | Error> {
+): Promise<string | Exception> {
   const nameSplitted: string = pluginName.split("/")[1];
-  let clone;
 
   try {
-    clone = spawn("git", [
-      "clone",
-      `https://github.com/${pluginName}`,
-      `./installed/${nameSplitted}`,
-    ]);
-
-    clone.stdout.on("data", () => console.log("Downloading..."));
-
-    const file: InfoJSON = await readInfoFile(pluginName);
-
-    return Promise.resolve(new PlugIn(file.name, file.description));
-  } catch (err) {
-    clone?.stderr.on("data", (data) => console.error(`stderr: ${data}`));
-    return Promise.reject(new Error(`Error while downloading your plugin: ${err}`));
-  } finally {
-    clone?.on("close", (code) => console.log(`$Finishing with code ${code}`));
+    const command: string = `git clone https://github.com/${pluginName} ./installed/${nameSplitted}`;
+    const run = util.promisify(exec);
+    const { stdout, stderr } = await run(command);
+    //Apparently they are sharing the same Buffer
+    //need to solve this by creating a separate Buffer.
+    if(stderr.length === 0){
+      return Promise.resolve(stdout);
+    }else{ 
+      throw stderr;
+    }
+  } catch (err: any) {
+    return Promise.reject(
+      (err instanceof Error)
+        ? new GenericException(err.message)
+        : new DownloadException(err)
+    );
   }
 }

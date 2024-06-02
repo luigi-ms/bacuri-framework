@@ -3,8 +3,8 @@
 
 import * as readline from "readline";
 import {
-//  existsInLocal,
-  existsInRemote
+  //  existsInLocal,
+  existsInRemote,
 } from "./operations";
 import PlugInList from "./classes/PlugInList";
 
@@ -28,12 +28,11 @@ r.question("(option plugin)= ", (answer: string) => {
   if (opt === 1) {
     console.log("Please wait while we look for this it");
     if (existsInRemote(pluginName)) {
+      console.log("Your plugin was found!");
       console.log("Downloading...");
-      list.add(pluginName)
-        .then(() => console.log("Success!"))
-        .catch(rej => console.error(`${rej}`));
+      list.add(pluginName);
     } else {
-      console.error(`Sorry, look like ${pluginName} is not available :(`);
+      console.error(`Sorry, looks like ${pluginName} is not available :(`);
     }
   } else if (opt === 2) {
     console.log("updating");

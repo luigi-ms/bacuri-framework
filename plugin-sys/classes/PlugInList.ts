@@ -4,7 +4,7 @@ import {
   //  erasePlugin,
   updatePlugin,
 } from "../operations";
-import downloadPlugin from "../operations/download";
+import { downloadPlugin, readInfoFile } from "../operations/download";
 
 export default class PlugInList {
   protected _list: Map<string, PlugIn>;
@@ -15,16 +15,20 @@ export default class PlugInList {
     this._length = 0;
   }
 
-  public async add(pluginName: string): Promise<void> {
-    const result = await downloadPlugin(pluginName);
-    const newID: string = uuid();
+  public add(pluginName: string): void {
+    downloadPlugin(pluginName)
+      .then(() => {
+        readInfoFile(pluginName)
+          .then((res) => {
+            const newID: string = uuid();
 
-    if (result instanceof PlugIn) {
-      result.id = newID;
-      this._list.set(newID, result);
-    } else {
-      console.error(`${result}`);
-    }
+            const newPlugin = new PlugIn(res.name, res.description);
+            this._list.set(newID, newPlugin);
+            console.log("Registered!");
+          })
+          .catch((rej) => rej);
+      })
+      .catch((rej) => console.error(rej.getResume()));
   }
 
   public update(oldPlugin: PlugIn): void {
