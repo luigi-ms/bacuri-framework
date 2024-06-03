@@ -1,4 +1,9 @@
-import PlugIn from "../classes/PlugIn";
+interface Exception {
+  _code: string;
+  _name: string;
+  _message: string;
+  details: string;
+}
 
 declare type InfoJSON = {
   name: string,
@@ -8,6 +13,6 @@ declare type InfoJSON = {
   stylePath: string
 };
 
-declare function readInfoFile(pluginName: string): Promise<PlugIn>;
+declare function readInfoFile(pluginName: string): Promise<InfoJSON>;
 
-export default function downloadPlugin(pluginName: string): PlugIn;
+declare function downloadPlugin(pluginName: string): Promise<string | Exception>;

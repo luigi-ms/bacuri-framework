@@ -1,6 +1,5 @@
-import { exec } from "child_process";
+import { spawn } from "child_process";
 import { promises } from "fs";
-import util from "util";
 import {
   Exception,
   ReadFileException,
@@ -37,20 +36,14 @@ export async function readInfoFile(pluginName: string): Promise<InfoJSON> {
 
 export async function downloadPlugin(
   pluginName: string
-): Promise<string | Exception> {
+): Promise<void | Exception> {
   const nameSplitted: string = pluginName.split("/")[1];
 
   try {
-    const command: string = `git clone https://github.com/${pluginName} ./installed/${nameSplitted}`;
-    const run = util.promisify(exec);
-    const { stdout, stderr } = await run(command);
-    //Apparently they are sharing the same Buffer
-    //need to solve this by creating a separate Buffer.
-    if(stderr.length === 0){
-      return Promise.resolve(stdout);
-    }else{ 
-      throw stderr;
-    }
+    const git = spawn("git", ["clone", `https://github.com/${pluginName}`, `./installed/${nameSplitted}`], { stdio: ['ignore', 'pipe', 'pipe'] });
+
+    git.stderr.on("data", (data) => console.error(`${data}`));
+    git.on("close", (code) => console.log(`Finished with code ${code}`));
   } catch (err: any) {
     return Promise.reject(
       (err instanceof Error)
