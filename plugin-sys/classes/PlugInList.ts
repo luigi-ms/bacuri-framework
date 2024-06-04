@@ -1,10 +1,8 @@
 import { v4 as uuid } from "uuid";
 import PlugIn from "./PlugIn";
-import {
-  //  erasePlugin,
-  updatePlugin,
-} from "../operations";
-import { downloadPlugin, readInfoFile } from "../operations/download";
+import FilesOperations from "./FilesOperations";
+import SysOperations from "./SysOperations";
+import {Exception} from "../exceptions";
 
 export default class PlugInList {
   protected _list: Map<string, PlugIn>;
@@ -15,23 +13,27 @@ export default class PlugInList {
     this._length = 0;
   }
 
-  public add(pluginName: string): void {
-    downloadPlugin(pluginName)
-      .then(() => {
-        readInfoFile(pluginName)
-          .then((res) => {
-            const newID: string = uuid();
+  public async add(pluginName: string): Promise<void> {
+    try{
+      await SysOperations.download(pluginName);
+      const manifestFile = await FilesOperations.readManifest(pluginName);
+      const newPlugin = new PlugIn(manifestFile.name, manifestFile.description);
+      const id = uuid();
 
-            const newPlugin = new PlugIn(res.name, res.description);
-            this._list.set(newID, newPlugin);
-            console.log("Registered!");
-          })
-          .catch((rej) => rej);
-      })
-      .catch((rej) => console.error(rej.getResume()));
+      newPlugin.id = id;
+      this._list.set(id, newPlugin);
+
+      await FilesOperations.updateRegistry(newPlugin);
+      console.log("Registered!");
+    }catch(err){ 
+      console.error((err instanceof Exception)
+        ? err.getResume()
+        : err
+      );
+    }
   }
 
-  public update(oldPlugin: PlugIn): void {
+  public updatePlugin(oldPlugin: PlugIn): void {
     const updatedPlugin = updatePlugin(oldPlugin.name);
     const oldID = oldPlugin.id;
     updatedPlugin.id = oldID;
@@ -39,7 +41,7 @@ export default class PlugInList {
     this._list.set(oldID, updatedPlugin);
   }
 
-  public del(pluginID: string): void | Error {
+  public del(pluginID: string): void {
     if (this._list.has(pluginID)) {
       this._list.delete(pluginID);
     } else {
@@ -47,7 +49,7 @@ export default class PlugInList {
     }
   }
 
-  public searchByName(pluginName: string): PlugIn | Error {
+  public searchByName(pluginName: string): PlugIn {
     for (let pl of this._list.values()) {
       if (pl.name === pluginName) {
         return pl;
