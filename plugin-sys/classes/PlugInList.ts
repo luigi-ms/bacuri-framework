@@ -1,38 +1,47 @@
-import { v4 as uuid } from "uuid";
-import PlugIn from "./PlugIn";
-import FilesOperations from "./FilesOperations";
-import SysOperations from "./SysOperations";
-import {Exception} from "../exceptions";
+import PlugIn from "./PlugIn.js";
+import FilesOperations from "./FilesOperations.js"; 
+import SysOperations from "./SysOperations.js";
 
 export default class PlugInList {
-  protected _list: Map<string, PlugIn>;
+  protected _list: Map<number, PlugIn>;
   protected _length: number;
+  protected _last: PlugIn;
 
   constructor() {
     this._list = new Map();
     this._length = 0;
+    this._last = new PlugIn("", "");
   }
 
-  public async add(pluginName: string): Promise<void> {
-    try{
-      await SysOperations.download(pluginName);
-      const manifestFile = await FilesOperations.readManifest(pluginName);
-      const newPlugin = new PlugIn(manifestFile.name, manifestFile.description);
-      const id = uuid();
+  public add(pluginName: string): void {
+    // Try just download and save the list state
+    // Save to the registry later, as a
+    // separated feature.
+    SysOperations.download(pluginName)
+    .then(async () => {
+        const manifestFile = await FilesOperations.readManifest(pluginName);
+        const newPlugin: PlugIn = new PlugIn(manifestFile.name, manifestFile.description);
+        const id: number = this._generateID();
 
-      newPlugin.id = id;
-      this._list.set(id, newPlugin);
+        newPlugin.id = id;
+        this._list.set(id, newPlugin);
 
-      await FilesOperations.updateRegistry(newPlugin);
-      console.log("Registered!");
-    }catch(err){ 
-      console.error((err instanceof Exception)
-        ? err.getResume()
-        : err
-      );
-    }
+        return newPlugin;
+    })
+    .then(async (pl: any) => {
+      if(pl instanceof PlugIn){
+        this._last = pl;
+        this._length += 1;
+        await FilesOperations.updateRegistry(pl);
+        console.warn("Registered!");
+      }
+    })
+    .catch((rej) => {
+      console.error(rej);
+    })
+    .finally(() => console.warn("Download finished")); 
   }
-
+/*
   public updatePlugin(oldPlugin: PlugIn): void {
     const updatedPlugin = updatePlugin(oldPlugin.name);
     const oldID = oldPlugin.id;
@@ -40,8 +49,8 @@ export default class PlugInList {
 
     this._list.set(oldID, updatedPlugin);
   }
-
-  public del(pluginID: string): void {
+*/
+  public del(pluginID: number): void {
     if (this._list.has(pluginID)) {
       this._list.delete(pluginID);
     } else {
@@ -59,7 +68,11 @@ export default class PlugInList {
     throw new Error("There's no plugin with this name :(");
   }
 
-  public get list(): Map<string, PlugIn> {
+  protected _generateID(): number {
+    return this._last.id *= 3;
+  }
+
+  public get list(): Map<number, PlugIn> {
     return this._list;
   }
 

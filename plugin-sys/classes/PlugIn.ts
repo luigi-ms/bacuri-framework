@@ -1,12 +1,12 @@
 export default class PlugIn {
-  public id: string;
+  public id: number;
   protected _name: string;
   protected _author: string;
   protected _version: number;
   protected _description: string;
 
   constructor(name: string, description: string){
-    this.id = "";
+    this.id = 1;
     this._name = name;
     this._description = description;
     this._version = 0;

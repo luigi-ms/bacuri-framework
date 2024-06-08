@@ -1,24 +1,44 @@
-import { spawn } from "child_process";
-import hostedGitInfo from "hosted-git-info";
-import { Exception, DownloadException, GenericException } from "../exceptions";
+import { exec } from "child_process";
+import {
+  Exception,
+  DownloadException,
+  GenericException,
+} from "./Exceptions.js";
 
 export default class SysOperations {
-  public static async download(pluginName: string): Promise<void | Exception> {
+  public static download(pluginName: string): Promise<void | Exception> {
     const nameSplitted: string = pluginName.split("/")[1];
 
     try {
+      exec(
+        `git clone https://github.com/${pluginName} ./installed/${nameSplitted}`,
+        (err, out, stderr) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+
+          console.log(out);
+          console.log(stderr);
+        }
+      );
+
+      return Promise.resolve();
+      /*
       const git = spawn(
         "git",
         [
           "clone",
           `https://github.com/${pluginName}`,
           `./installed/${nameSplitted}`,
-        ],
-        { stdio: ["ignore", "pipe", "pipe"] }
-      );
+        ]);
 
-      git.stderr.on("data", (data) => console.error(`${data}`));
+        console.log("download started")
+      git.stderr.on("data", (data) => console.log(`${data}`));
       git.on("close", (code) => console.log(`Finished with code ${code}`));
+
+      return Promise.resolve("Download finished");
+      */
     } catch (err: any) {
       return Promise.reject(
         err instanceof Error
@@ -29,8 +49,13 @@ export default class SysOperations {
   }
 
   public static async existsInRemote(pluginName: string): Promise<boolean> {
-    const info = hostedGitInfo.fromUrl(`git@github.com:${pluginName}`);
+    const res: Response = await fetch(
+      `https://api.github.com/repos/${pluginName}`
+    );
+    const json = await res.json();
 
-    return (info) ? true : false;
+    return json.message === "Not Found"
+      ? Promise.reject(false)
+      : Promise.resolve(true);
   }
 }

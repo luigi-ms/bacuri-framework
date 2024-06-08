@@ -1,6 +1,6 @@
 import { promises } from "fs";
-import { Exception, ReadFileException } from "../exceptions";
-import PlugIn from "./PlugIn";
+import { Exception, ReadFileException } from "./Exceptions.js";
+import PlugIn from "./PlugIn.js";
 
 type InfoJSON = {
   name: string;
@@ -33,7 +33,7 @@ export default class FilesOperations {
   public static async updateRegistry(pl: PlugIn): Promise<void> {
     let handler;
     try {
-      handler = await promises.open("./.registry.json");
+      handler = await promises.open("./registry.json");
       const reader: string = await handler.readFile("utf8");
       const registry = JSON.parse(reader);
       const newRegistry = JSON.stringify({ ...registry, pl });
