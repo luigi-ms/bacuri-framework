@@ -1,49 +1,72 @@
-/* Main menu, where user interacts with the System
- * All visual interactions must go here */
-
-//NOTE: Change to read options from command line
-
-import * as readline from "readline";
 import PlugInList from "./classes/PlugInList.js";
 import SysOperations from "./classes/SysOperations.js";
 
-const list: PlugInList = new PlugInList();
-const r = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const list = new PlugInList();
 
-console.log("Welcome to CocaiSS Plugin System!");
-console.log(`Select an option below, and write the plugin's name
-            1 - Install a new plugin
-            2 - Update a plugin
-            3 - Remove a plugin
-            0 - Exit menu`);
+enum Options {
+  Add = "-a",
+  Pull = "-p",
+  Update = "-u",
+  Remove = "-r",
+  Version = "-v",
+  Help = "-h"
+};
 
-r.question("(option plugin)= ", (answer: string) => {
-  const opt: number = Number(answer.split(" ")[0]),
-    pluginName: string = answer.split(" ")[1];
-
-  if (opt === 1) {
+class Main {
+  public static add(pluginName: string): void {
     console.log("Please wait while we look for it");
     SysOperations.existsInRemote(pluginName)
-      .then(() => {
-        console.warn("Your plugin was found!");
-        console.log("Downloading...");
-        list.add(pluginName); 
-      })
-      .catch(() => {
-        console.error(`Sorry, looks like ${pluginName} is not available :(`);
-      });
-  } else if (opt === 2) {
-    console.log("updating");
-  } else if (opt === 3) {
-    console.log("removing");
-  } else if (opt === 0) {
-    console.log("See you later!");
-    r.close();
-  } else {
-    console.log("Option unavailable");
+    .then(() => {
+      console.warn("Your plugin was found!");
+      console.log("Downloading...");
+      list.add(pluginName); 
+    })
+    .catch(() => {
+      console.error(`Sorry, looks like ${pluginName} is not available :(`);
+    });
   }
-  r.close();
-});
+  
+  public static pull(): void {
+    console.log('Retrieving');
+  }
+
+  public static upd(): void {
+    console.log('updating');
+  }
+
+  public static del(): void {
+    console.log('Removiing');
+  }
+
+  public static getVersion(): void {
+    console.log('v0.1.0-alpha');
+  }
+
+  public static help(): void {
+    console.log(`CocaiSS Plugin System utility
+          -a [author/name] Downloads a new plugin
+          -d [name] Removes a plugin
+          -h Shows this help log
+          -p [name] Retrieves info from installed plugin
+          -u [author/name] Updates a plugin
+          -v Shows version of this system`);
+  }
+}
+
+const args: Array<string> = process.argv;
+const opt: string = args[2];
+const plugin: string = args[3];
+
+if(opt === Options.Add){
+  Main.add(plugin);
+}else if(opt === Options.Pull){
+  Main.pull(); 
+}else if(opt === Options.Update){
+  Main.upd();
+}else if(opt === Options.Remove){
+  Main.del();
+}else if(opt === Options.Help){
+  Main.help();
+}else if(opt === Options.Version){
+  Main.getVersion();
+}
