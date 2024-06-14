@@ -6,6 +6,13 @@ import {
 } from "./Exceptions.js";
 
 export default class SysOperations {
+  /**
+   * Download the plugin and save in ./installed folder
+   * @param {string} pluginName
+   * @returns {void | Exception} a Promise that resolves to nothing or rejects an Exception
+   * @see child_process#exec
+   * @see Exception
+   **/
   public static download(pluginName: string): Promise<void | Exception> {
     const nameSplitted: string = pluginName.split("/")[1];
 
@@ -24,21 +31,6 @@ export default class SysOperations {
       );
 
       return Promise.resolve();
-      /*
-      const git = spawn(
-        "git",
-        [
-          "clone",
-          `https://github.com/${pluginName}`,
-          `./installed/${nameSplitted}`,
-        ]);
-
-        console.log("download started")
-      git.stderr.on("data", (data) => console.log(`${data}`));
-      git.on("close", (code) => console.log(`Finished with code ${code}`));
-
-      return Promise.resolve("Download finished");
-      */
     } catch (err: any) {
       return Promise.reject(
         err instanceof Error
@@ -48,6 +40,11 @@ export default class SysOperations {
     }
   }
 
+  /**
+   * Uses Github API to validate plugin's existence
+   * @param {string} pluginName
+   * @returns {Promise<boolean>}
+   * */
   public static async existsInRemote(pluginName: string): Promise<boolean> {
     const res: Response = await fetch(
       `https://api.github.com/repos/${pluginName}`

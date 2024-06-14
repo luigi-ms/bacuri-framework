@@ -1,9 +1,15 @@
+/** @fileoverview Class used for managing the Plugins
+ * @version 0.1.0-alpha
+ * @author Luigi Moraes 
+* **/
+
 import PlugIn from "./PlugIn.js";
-import FilesOperations from "./FilesOperations.js"; 
+import FilesOperations from "./FilesOperations.js";
 import SysOperations from "./SysOperations.js";
+import { GenericException } from "./Exceptions.js";
 
 export default class PlugInList {
-  protected _list: Map<number, PlugIn>;
+  protected _list: Map<string, PlugIn>;
   protected _length: number;
   protected _last: PlugIn;
 
@@ -13,35 +19,20 @@ export default class PlugInList {
     this._last = new PlugIn("", "");
   }
 
+  /**
+   * Downloads and saves in the Map
+   * @param {string} pluginName 
+  * **/
   public add(pluginName: string): void {
-    // Try just download and save the list state
-    // Save to the registry later, as a
-    // separated feature.
     SysOperations.download(pluginName)
-    .then(async () => {
-        const manifestFile = await FilesOperations.readManifest(pluginName);
-        const newPlugin: PlugIn = new PlugIn(manifestFile.name, manifestFile.description);
-        const id: number = this._generateID();
-
-        newPlugin.id = id;
-        this._list.set(id, newPlugin);
-
-        return newPlugin;
-    })
-    .then(async (pl: any) => {
-      if(pl instanceof PlugIn){
-        this._last = pl;
-        this._length += 1;
-        await FilesOperations.updateRegistry(pl);
-        console.warn("Registered!");
-      }
-    })
-    .catch((rej) => {
-      console.error(rej);
-    })
-    .finally(() => console.warn("Download finished")); 
+      .then(() => {
+        const plName = pluginName.split('/')[1];
+        this._list.set(plName, this._last);
+      })
+      .catch((rej) => console.error(rej))
+      .finally(() => console.warn("Download finished"));
   }
-/*
+  /*
   public updatePlugin(oldPlugin: PlugIn): void {
     const updatedPlugin = updatePlugin(oldPlugin.name);
     const oldID = oldPlugin.id;
@@ -49,7 +40,7 @@ export default class PlugInList {
 
     this._list.set(oldID, updatedPlugin);
   }
-*/
+
   public del(pluginID: number): void {
     if (this._list.has(pluginID)) {
       this._list.delete(pluginID);
@@ -58,25 +49,38 @@ export default class PlugInList {
     }
   }
 
-  public searchByName(pluginName: string): PlugIn {
-    for (let pl of this._list.values()) {
-      if (pl.name === pluginName) {
-        return pl;
+  public searchByName(pluginName: string): PlugIn | void {
+    //1. Syncronize so I can use an updated list
+    //2. Look up in the this._list
+    //3. Return the info of found plugin
+
+    /*
+    try {
+      this._list = FilesOperations.syncronize();
+      const result: PlugIn = Array.from(this._list.values()).filter((pl) => {
+        return pl.name === pluginName;
+      })[0];
+
+      if (result) {
+        return result;
+      } else {
+        throw new GenericException("No Plugin found");
       }
+    } catch (err: any) {
+      console.error(err);
     }
-
-    throw new Error("There's no plugin with this name :(");
+    
   }
-
-  protected _generateID(): number {
-    return this._last.id *= 3;
-  }
-
-  public get list(): Map<number, PlugIn> {
+*/
+  public get list(): Map<string, PlugIn> {
     return this._list;
   }
 
   public get length(): number {
     return this._length;
+  }
+
+  public get last(): PlugIn {
+    return this._last;
   }
 }

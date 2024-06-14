@@ -38,9 +38,19 @@ export class GenericException extends Exception {
 export class ReadFileException extends Exception {
   constructor(details: string="no extra info") {
     super();
-    this._code = "DOWN01";
+    this._code = "FILE01";
     this._name = "ReadFileException";
     this._message = "Cannot open or read this file";
+    this.details = details;
+  }
+}
+
+export class NoFileException extends Exception {
+  constructor(details: string="no extra info") {
+    super();
+    this._code = "FILE02";
+    this._name = "NoFileException";
+    this._message = "This file can't be reached or doesn't exist";
     this.details = details;
   }
 }
@@ -48,7 +58,7 @@ export class ReadFileException extends Exception {
 export class DownloadException extends Exception {
   constructor(details: string="no extra info") {
     super();
-    this._code = "DOWN02";
+    this._code = "DOWN01";
     this._name = "DownloadException";
     this._message = "Something happened downloading this plugin";
     this.details = details;
