@@ -1,7 +1,5 @@
 import PlugInList from "./PlugInList.js";
-import FilesOperations from "./FilesOperations.js";
 import PlugIn from "./PlugIn.js";
-import SysOperations from "./SysOperations.js";
 
 export enum Options {
   Add = "-a",
@@ -23,7 +21,7 @@ export class Main {
 
   public add(pluginName: string): void {
     console.log("Please wait while we look for it");
-    SysOperations.existsInRemote(pluginName)
+    this._list.existsInRemote(pluginName)
       .then(() => {
         console.warn("Your plugin was found!");
         console.log("Downloading...");
@@ -47,7 +45,7 @@ export class Main {
   }
 
   public save(pluginName: string): void {
-    FilesOperations.readManifest(pluginName)
+    this._list.filesOps.readManifest(pluginName)
       .then((json) => {
         const pl = new PlugIn(json.name, json.description);
 
@@ -57,7 +55,7 @@ export class Main {
         return pl;
       })
       .then((pl) => {
-        FilesOperations.updateRegistry(pl);
+        this._list.filesOps.updateRegistry(pl);
       })
       .catch((rej) => console.error(rej));
   }
@@ -80,7 +78,7 @@ export class Main {
   }
 
   public start(): void {
-    FilesOperations.createEmptyFile("./registry.json").catch((rej) =>
+    this._list.filesOps.createEmptyFile("./registry.json").catch((rej) =>
       console.error(rej)
     );
   }

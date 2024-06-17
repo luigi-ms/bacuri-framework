@@ -11,7 +11,9 @@ type InfoJSON = {
 };
 
 export default class FilesOperations {
-  public static async readManifest(pluginName: string): Promise<InfoJSON> {
+  constructor(){}
+
+  public async readManifest(pluginName: string): Promise<InfoJSON> {
     const folderPath: string = `installed/${pluginName}`;
 
     try {
@@ -30,7 +32,7 @@ export default class FilesOperations {
     }
   }
 
-  public static async updateRegistry(pl: PlugIn): Promise<void> {
+  public async updateRegistry(pl: PlugIn): Promise<void> {
     try {
       const reader: string = await promises.readFile("./registry.json","utf8");
       const registry = JSON.parse(reader);
@@ -43,7 +45,7 @@ export default class FilesOperations {
     }
   }
 
-  public static async savePluginName(pluginName: string): Promise<void> {
+  public async savePluginName(pluginName: string): Promise<void> {
     try {
       await promises.writeFile("./.temp", pluginName);
     } catch (err) {
@@ -51,7 +53,7 @@ export default class FilesOperations {
     }
   }
 
-  public static async searchInDir(name: string): Promise<string | Exception> {
+  public async searchInDir(name: string): Promise<string | Exception> {
     try {
       const installed: Array<string> = await promises.readdir("./installed");
       const result: string = installed.filter(
@@ -68,7 +70,7 @@ export default class FilesOperations {
     }
   }
 
-  public static async createEmptyFile(fileName: string): Promise<void> {
+  public async createEmptyFile(fileName: string): Promise<void> {
     try {
       await promises.writeFile(fileName, "");
     } catch (err) {
@@ -76,7 +78,7 @@ export default class FilesOperations {
     }
   }
 
-  public static syncronize(): Map<number, PlugIn> {
+  public syncronize(): Map<number, PlugIn> {
     const synced: Map<number, PlugIn> = new Map();
     // 1. Convert registry to JSON object
     // 2. Loop over JSON
@@ -85,10 +87,11 @@ export default class FilesOperations {
     return synced;
   }
 
-  public static mapToJSON(map: Map<string, PlugIn>): void {
+  /*
+  public mapToJSON(map: Map<string, PlugIn>): void {
     //let template = { id: "0", pl: new PlugIn("", "") };
   }
-  /*
+
   public static async existsInLocal(pluginName?: string): Promise<boolean> {
     return true;
   }*/
