@@ -1,3 +1,8 @@
+/**
+* @fileoverview Processes the given args
+* @author Luigi Moraes
+* **/
+
 import PlugInList from "./classes/PlugInList.js";
 import { Options, Main } from "./classes/Main.js";
 

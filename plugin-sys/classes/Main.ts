@@ -1,3 +1,9 @@
+/**
+ * Implements all operations available to the user
+ * @class
+ *
+**/
+
 import PlugInList from "./PlugInList.js";
 import PlugIn from "./PlugIn.js";
 
@@ -16,6 +22,9 @@ export class Main {
   protected _list: PlugInList;
 
   constructor(list: PlugInList) {
+    /**
+    * @param {PlugInList} list
+    * @protected **/
     this._list = list;
   }
 
@@ -78,7 +87,8 @@ export class Main {
   }
 
   public start(): void {
-    this._list.filesOps.createEmptyFile("./registry.json").catch((rej) =>
+    const content = JSON.stringify({ "list": [] });
+    this._list.filesOps.createFile("./registry.json", content).catch((rej) =>
       console.error(rej)
     );
   }

@@ -10,7 +10,7 @@ type InfoJSON = {
   stylePath: string;
 };
 
-export default class FilesOperations {
+export default class RegistryManagement {
   constructor(){}
 
   public async readManifest(pluginName: string): Promise<InfoJSON> {
@@ -36,10 +36,11 @@ export default class FilesOperations {
     try {
       const reader: string = await promises.readFile("./registry.json","utf8");
       const registry = JSON.parse(reader);
-      const newRegistry = JSON.stringify({ ...registry, ...pl });
+
+      registry.list.push(pl);
 
       //get error code
-      await promises.writeFile("./registry.json", newRegistry);
+      await promises.writeFile("./registry.json", JSON.stringify(registry));
     } catch (err) {
       console.error(err instanceof Exception ? err.getResume() : err);
     }
@@ -70,9 +71,9 @@ export default class FilesOperations {
     }
   }
 
-  public async createEmptyFile(fileName: string): Promise<void> {
+  public async createFile(fileName: string, content: string): Promise<void> {
     try {
-      await promises.writeFile(fileName, "");
+      await promises.writeFile(fileName, content);
     } catch (err) {
       console.error(err);
     }

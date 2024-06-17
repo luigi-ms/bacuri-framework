@@ -2,6 +2,7 @@
  * @version 0.1.0-alpha
  * @author Luigi Moraes 
 * **/
+
 import { exec } from "child_process";
 import {
   Exception,
@@ -10,17 +11,17 @@ import {
 } from "./Exceptions.js";
 
 import PlugIn from "./PlugIn.js";
-import FilesOperations from "./FilesOperations.js";
+import RegistryManagement from "./RegistryManagement.js";
 
 export default class PlugInList {
   protected _list: Map<string, PlugIn>;
-  protected _filesOps: FilesOperations;
+  protected _filesOps: RegistryManagement;
   protected _length: number;
   protected _last: PlugIn;
 
   constructor() {
     this._list = new Map();
-    this._filesOps = new FilesOperations();
+    this._filesOps = new RegistryManagement();
     this._length = 0;
     this._last = new PlugIn("", "");
   }
@@ -82,9 +83,8 @@ export default class PlugInList {
     /**
    * Download the plugin and save in ./installed folder
    * @param {string} pluginName
-   * @returns {void | Exception} a Promise that resolves to nothing or rejects an Exception
+   * @throws Exception
    * @see child_process#exec
-   * @see Exception
    **/
   protected _download(pluginName: string): Promise<void | Exception> {
     const nameSplitted: string = pluginName.split("/")[1];
@@ -133,7 +133,7 @@ export default class PlugInList {
     return this._list;
   }
 
-  public get filesOps(): FilesOperations {
+  public get filesOps(): RegistryManagement {
     return this._filesOps;
   }
 
