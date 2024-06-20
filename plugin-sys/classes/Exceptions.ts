@@ -1,3 +1,7 @@
+/**
+* @fileoverview List of classes for better error handling
+* @author Luigi Moraes **/
+
 export abstract class Exception {
   protected _code: string;
   protected _name: string;

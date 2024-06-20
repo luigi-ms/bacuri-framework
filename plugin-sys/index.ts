@@ -8,7 +8,8 @@ import { Options, Main } from "./classes/Main.js";
 import RegistryManagement from "./classes/RegistryManagement.js";
 import { Exception } from "./classes/Exceptions.js";
 
-//Gets an updated version from registry
+//Gets an updated version from registry.json
+//before process anything
 
 RegistryManagement.syncronize()
   .then((map) => {
@@ -25,7 +26,7 @@ RegistryManagement.syncronize()
     } else if (opt === Options.Pull) {
       main.pull(plugin);
     } else if (opt === Options.Update) {
-      main.upd();
+      main.upd(plugin);
     } else if (opt === Options.Remove) {
       main.del(plugin);
     } else if (opt === Options.Help) {

@@ -2,7 +2,6 @@ import { promises } from "fs";
 import {
   Exception,
   GenericException,
-  NoFileException,
   ReadFileException,
 } from "./Exceptions.js";
 import PlugIn from "./PlugIn.js";
@@ -37,6 +36,14 @@ export default class RegistryManagement {
     }
   }
 
+  public async createFile(fileName: string, content: string): Promise<void> {
+    try {
+      await promises.writeFile(fileName, content);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   public async addToRegistry(pl: PlugIn): Promise<void> {
     try {
       const reader: string = await promises.readFile("./registry.json", "utf8");
@@ -56,7 +63,7 @@ export default class RegistryManagement {
       const reader: string = await promises.readFile("./registry.json", "utf8");
       const registry = JSON.parse(reader);
 
-      const updated = registry.list.filter((p: PlugIn) => p.name !== pl.name)
+      const updated = registry.list.filter((p: PlugIn) => p.name !== pl.name);
 
       //get error code
       await promises.writeFile("./registry.json", JSON.stringify(updated));
@@ -65,34 +72,9 @@ export default class RegistryManagement {
     }
   }
 
-  public async savePluginName(pluginName: string): Promise<void> {
+  public async removeFromDir(folderName: string): Promise<void> {
     try {
-      await promises.writeFile("./.temp", pluginName);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  public async searchInDir(name: string): Promise<string | Exception> {
-    try {
-      const installed: Array<string> = await promises.readdir("./installed");
-      const result: string = installed.filter(
-        (file: string) => file === name
-      )[0];
-
-      if (result === "") throw new NoFileException();
-
-      return Promise.resolve(result);
-    } catch (err: any) {
-      const details: string = err ? err.message : "";
-
-      return Promise.reject(new ReadFileException(details));
-    }
-  }
-
-  public async createFile(fileName: string, content: string): Promise<void> {
-    try {
-      await promises.writeFile(fileName, content);
+      await promises.rm(`./installed/${folderName}`, { recursive: true });
     } catch (err) {
       console.error(err);
     }
@@ -103,19 +85,11 @@ export default class RegistryManagement {
       const reader: string = await promises.readFile("./registry.json", "utf8");
       const registry = JSON.parse(reader);
 
-      return Promise.resolve(new Map(registry.list)); 
+      return Promise.resolve(new Map(registry.list));
     } catch (err: any) {
-      return (err instanceof Error) 
+      return err instanceof Error
         ? Promise.reject(new GenericException(err.message))
         : Promise.reject(new ReadFileException(err));
-    }
-  }
-
-  public async removeFromDir(folderName: string): Promise<void> {
-    try{ 
-      await promises.rm(`./installed/${folderName}`, { recursive: true })
-    }catch(err){
-      console.error(err)
     }
   }
 }

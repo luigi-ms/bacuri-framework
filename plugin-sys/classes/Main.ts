@@ -28,7 +28,7 @@ export class Main {
 
   public add(pluginName: string): void {
     console.log("Please wait while we look for it");
-    this._list
+    this._list.repoOps
       .existsInRemote(pluginName)
       .then(() => {
         console.warn("Your plugin was found!");
@@ -45,11 +45,13 @@ export class Main {
     this._list
       .searchByName(pluginName)
       .then((res) => console.log(res))
-      .catch((rej) => console.error(rej));
+      .catch((rej) => console.error(rej.getResume()));
   }
 
-  public upd(): void {
-    console.log("updating");
+  public upd(pluginName: string): void {
+    // 1. Try run a git pull inside the plugin folder
+    // 2. Try run a git clone and replace the folder
+   this._list.updatePlugin(pluginName) 
   }
 
   public del(pluginName: string): void {
@@ -73,7 +75,7 @@ export class Main {
       .then((pl) => {
         this._list.filesOps.addToRegistry(pl);
       })
-      .catch((rej) => console.error(rej));
+      .catch((rej) => console.error(rej.getResume()));
   }
 
   public getVersion(): void {

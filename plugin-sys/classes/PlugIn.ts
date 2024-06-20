@@ -1,6 +1,6 @@
 export default class PlugIn {
   public author: string;
-  public version: string; 
+  public version: string; //Hash of the last commit
   protected _name: string;
   protected _description: string;
 
