@@ -8,14 +8,14 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "sass": "^1.62.1"
+    "sass": "^1.77.6"
   },
   "scripts": {
     "watch-scss": "sass --watch ./scss:./styles",
     "run-scss": "sass ./scss:./styles"
   },
   "devDependencies": {
-    "@types/node": "^20.13.0",
+    "@types/node": "^20.14.6",
     "typescript": "^5.4.5"
   }
 }

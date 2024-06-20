@@ -9,7 +9,6 @@ import {
   DownloadException,
   GenericException,
 } from "./Exceptions.js";
-
 import PlugIn from "./PlugIn.js";
 import RegistryManagement from "./RegistryManagement.js";
 
@@ -19,8 +18,8 @@ export default class PlugInList {
   protected _length: number;
   protected _last: PlugIn;
 
-  constructor() {
-    this._list = new Map();
+  constructor(map?: Map<string, PlugIn>) {
+    this._list = map ?? new Map();
     this._filesOps = new RegistryManagement();
     this._length = 0;
     this._last = new PlugIn("", "");
@@ -55,18 +54,11 @@ export default class PlugInList {
       throw new Error("This id isn't related to any plugin.");
     }
   }
-
-  public searchByName(pluginName: string): PlugIn | void {
-    //1. Syncronize so I can use an updated list
-    //2. Look up in the this._list
-    //3. Return the info of found plugin
-
-    /*
+*/
+  public async searchByName(pluginName: string): Promise<PlugIn | void> {
+    //NOTE: plugin folder name must be snakecased
     try {
-      this._list = FilesOperations.syncronize();
-      const result: PlugIn = Array.from(this._list.values()).filter((pl) => {
-        return pl.name === pluginName;
-      })[0];
+      const result = this._list.get(pluginName);
 
       if (result) {
         return result;
@@ -76,9 +68,7 @@ export default class PlugInList {
     } catch (err: any) {
       console.error(err);
     }
-    
   }
-*/
 
     /**
    * Download the plugin and save in ./installed folder

@@ -1,5 +1,10 @@
 import { promises } from "fs";
-import { Exception, NoFileException, ReadFileException } from "./Exceptions.js";
+import {
+  Exception,
+  GenericException,
+  NoFileException,
+  ReadFileException,
+} from "./Exceptions.js";
 import PlugIn from "./PlugIn.js";
 
 type InfoJSON = {
@@ -11,7 +16,7 @@ type InfoJSON = {
 };
 
 export default class RegistryManagement {
-  constructor(){}
+  constructor() {}
 
   public async readManifest(pluginName: string): Promise<InfoJSON> {
     const folderPath: string = `installed/${pluginName}`;
@@ -34,10 +39,10 @@ export default class RegistryManagement {
 
   public async updateRegistry(pl: PlugIn): Promise<void> {
     try {
-      const reader: string = await promises.readFile("./registry.json","utf8");
+      const reader: string = await promises.readFile("./registry.json", "utf8");
       const registry = JSON.parse(reader);
 
-      registry.list.push(pl);
+      registry.list.push([pl.name, pl]);
 
       //get error code
       await promises.writeFile("./registry.json", JSON.stringify(registry));
@@ -79,20 +84,20 @@ export default class RegistryManagement {
     }
   }
 
-  public syncronize(): Map<number, PlugIn> {
-    const synced: Map<number, PlugIn> = new Map();
-    // 1. Convert registry to JSON object
-    // 2. Loop over JSON
-    // 3. Get ID attr, then
-    // go like map.set(p.id, ...p)
-    return synced;
+  public static async syncronize(): Promise<Map<string, PlugIn>> {
+    try {
+      const reader: string = await promises.readFile("./registry.json", "utf8");
+      const registry = JSON.parse(reader);
+
+      return Promise.resolve(new Map(registry.list)); 
+    } catch (err: any) {
+      return (err instanceof Error) 
+        ? Promise.reject(new GenericException(err.message))
+        : Promise.reject(new ReadFileException(err));
+    }
   }
 
   /*
-  public mapToJSON(map: Map<string, PlugIn>): void {
-    //let template = { id: "0", pl: new PlugIn("", "") };
-  }
-
   public static async existsInLocal(pluginName?: string): Promise<boolean> {
     return true;
   }*/

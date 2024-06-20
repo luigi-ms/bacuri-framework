@@ -1,8 +1,6 @@
 /**
  * Implements all operations available to the user
- * @class
- *
-**/
+ * @class **/
 
 import PlugInList from "./PlugInList.js";
 import PlugIn from "./PlugIn.js";
@@ -41,8 +39,11 @@ export class Main {
       });
   }
 
-  public pull(): void {
+  public pull(pluginName: string): void {
     console.log("Retrieving");
+    this._list.searchByName(pluginName)
+    .then((res) => console.log(res))
+    .catch((rej) => console.error(rej));
   }
 
   public upd(): void {
