@@ -9,16 +9,17 @@ um sistema de Plugins para aumentar suas capacidades.
 
 ## Instalação
 
-CocaiSS é dividido em dois pacotes Node, o Core(que é este repositorio)
-e o Plugin Manager(link a seguir).
-Instale o pacote tagss usando Node:
+CocaiSS é composto por um Core e um Plugin Manager.
+Instale o framework com o NPM:
 
 ```bash
-yarn add cocaiss
-yarn add cocaiss-plugins
+npm i cocaiss
 ```
 
-[Plugin Manager]()
+Ou com o Yarn
+```bash
+yarn add cocaiss
+```
 
 ## Plugins
 
