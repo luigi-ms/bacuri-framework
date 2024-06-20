@@ -1,16 +1,17 @@
 /** @fileoverview Class used for managing the Plugins
  * @version 0.1.0-alpha
- * @author Luigi Moraes 
-* **/
+ * @author Luigi Moraes
+ * **/
 
 import { exec } from "child_process";
+import PlugIn from "./PlugIn.js";
+import RegistryManagement from "./RegistryManagement.js";
 import {
   Exception,
   DownloadException,
   GenericException,
+  NoPluginException,
 } from "./Exceptions.js";
-import PlugIn from "./PlugIn.js";
-import RegistryManagement from "./RegistryManagement.js";
 
 export default class PlugInList {
   protected _list: Map<string, PlugIn>;
@@ -26,51 +27,58 @@ export default class PlugInList {
   }
 
   /**
-* Downloads and saves in the Map
-   * @param {string} pluginName 
-  * **/
+   * Downloads and saves in the Map
+   * @param {string} pluginName
+   * **/
   public add(pluginName: string): void {
     this._download(pluginName)
       .then(() => {
-        const plName = pluginName.split('/')[1];
+        const plName = pluginName.split("/")[1];
         this._list.set(plName, this._last);
       })
       .catch((rej) => console.error(rej))
       .finally(() => console.warn("Download finished"));
   }
+
   /*
   public updatePlugin(oldPlugin: PlugIn): void {
+    try{
+      const oldVersion = this._getPluginVersion(oldPlugin.name);
+
+      if()
+    }catch(err){
+      console.error(err);
+    }
     const updatedPlugin = updatePlugin(oldPlugin.name);
     const oldID = oldPlugin.id;
     updatedPlugin.id = oldID;
 
     this._list.set(oldID, updatedPlugin);
   }
-
-  public del(pluginID: number): void {
-    if (this._list.has(pluginID)) {
-      this._list.delete(pluginID);
-    } else {
-      throw new Error("This id isn't related to any plugin.");
-    }
-  }
 */
+
+  public async del(pluginName: string): Promise<void | Exception> {
+    const removedPlugin = this._list.get(pluginName);
+
+    if (removedPlugin) {
+      await this._filesOps.removeFromRegistry(removedPlugin);
+      
+      this._list.delete(pluginName);
+    } else {
+      return Promise.reject(new NoPluginException());
+    } 
+  }
+
   public async searchByName(pluginName: string): Promise<PlugIn | void> {
     //NOTE: plugin folder name must be snakecased
-    try {
-      const result = this._list.get(pluginName);
+    const result = this._list.get(pluginName);
 
-      if (result) {
-        return result;
-      } else {
-        throw new GenericException("No Plugin found");
-      }
-    } catch (err: any) {
-      console.error(err);
-    }
+    return result
+      ? Promise.resolve(result)
+      : Promise.reject(new NoPluginException());
   }
 
-    /**
+  /**
    * Download the plugin and save in ./installed folder
    * @param {string} pluginName
    * @throws Exception
@@ -88,6 +96,9 @@ export default class PlugInList {
             return;
           }
 
+          //Git clone writes to the error stream for
+          //its own so is better let the log instead
+          //of error
           console.log(out);
           console.log(stderr);
         }
@@ -103,8 +114,18 @@ export default class PlugInList {
     }
   }
 
+  protected _getPluginVersion(pluginName: string): string {
+    if (this._list.has(pluginName)) {
+      const plugin = this._list.get(pluginName);
+
+      return plugin ? plugin.version : "";
+    } else {
+      throw new NoPluginException();
+    }
+  }
+
   /**
-   * Uses Github API to validate plugin's existence
+   * Uses Github API to check plugin's existence
    * @param {string} pluginName
    * @returns {Promise<boolean>}
    * */

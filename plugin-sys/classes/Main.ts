@@ -21,14 +21,15 @@ export class Main {
 
   constructor(list: PlugInList) {
     /**
-    * @param {PlugInList} list
-    * @protected **/
+     * @param {PlugInList} list
+     * @protected **/
     this._list = list;
   }
 
   public add(pluginName: string): void {
     console.log("Please wait while we look for it");
-    this._list.existsInRemote(pluginName)
+    this._list
+      .existsInRemote(pluginName)
       .then(() => {
         console.warn("Your plugin was found!");
         console.log("Downloading...");
@@ -40,22 +41,27 @@ export class Main {
   }
 
   public pull(pluginName: string): void {
-    console.log("Retrieving");
-    this._list.searchByName(pluginName)
-    .then((res) => console.log(res))
-    .catch((rej) => console.error(rej));
+    console.log("Retrieving...");
+    this._list
+      .searchByName(pluginName)
+      .then((res) => console.log(res))
+      .catch((rej) => console.error(rej));
   }
 
   public upd(): void {
     console.log("updating");
   }
 
-  public del(): void {
-    console.log("Removing");
+  public del(pluginName: string): void {
+    this._list
+      .del(pluginName)
+      .then(() => this._list.filesOps.removeFromDir(pluginName))
+      .catch((rej) => console.error(rej));
   }
 
   public save(pluginName: string): void {
-    this._list.filesOps.readManifest(pluginName)
+    this._list.filesOps
+      .readManifest(pluginName)
       .then((json) => {
         const pl = new PlugIn(json.name, json.description);
 
@@ -65,7 +71,7 @@ export class Main {
         return pl;
       })
       .then((pl) => {
-        this._list.filesOps.updateRegistry(pl);
+        this._list.filesOps.addToRegistry(pl);
       })
       .catch((rej) => console.error(rej));
   }
@@ -79,18 +85,18 @@ export class Main {
     p-sys [option] [author/name]
           -a [author/name] Adds a new plugin
           -i Creates the registry file
-          -d [name] Deletes a plugin
           -h Shows this help log
           -p [name] Pulls info from installed plugin
+          -r [name] Removes a plugin
           -s [name] Save data from last installed
           -u [author/name] Updates a plugin
           -v Shows version of this system`);
   }
 
   public start(): void {
-    const content = JSON.stringify({ "list": [] });
-    this._list.filesOps.createFile("./registry.json", content).catch((rej) =>
-      console.error(rej)
-    );
+    const content = JSON.stringify({ list: [] });
+    this._list.filesOps
+      .createFile("./registry.json", content)
+      .catch((rej) => console.error(rej));
   }
 }

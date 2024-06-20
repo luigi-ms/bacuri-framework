@@ -37,7 +37,7 @@ export default class RegistryManagement {
     }
   }
 
-  public async updateRegistry(pl: PlugIn): Promise<void> {
+  public async addToRegistry(pl: PlugIn): Promise<void> {
     try {
       const reader: string = await promises.readFile("./registry.json", "utf8");
       const registry = JSON.parse(reader);
@@ -46,6 +46,20 @@ export default class RegistryManagement {
 
       //get error code
       await promises.writeFile("./registry.json", JSON.stringify(registry));
+    } catch (err) {
+      console.error(err instanceof Exception ? err.getResume() : err);
+    }
+  }
+
+  public async removeFromRegistry(pl: PlugIn): Promise<void> {
+    try {
+      const reader: string = await promises.readFile("./registry.json", "utf8");
+      const registry = JSON.parse(reader);
+
+      const updated = registry.list.filter((p: PlugIn) => p.name !== pl.name)
+
+      //get error code
+      await promises.writeFile("./registry.json", JSON.stringify(updated));
     } catch (err) {
       console.error(err instanceof Exception ? err.getResume() : err);
     }
@@ -97,8 +111,11 @@ export default class RegistryManagement {
     }
   }
 
-  /*
-  public static async existsInLocal(pluginName?: string): Promise<boolean> {
-    return true;
-  }*/
+  public async removeFromDir(folderName: string): Promise<void> {
+    try{ 
+      await promises.rm(`./installed/${folderName}`, { recursive: true })
+    }catch(err){
+      console.error(err)
+    }
+  }
 }

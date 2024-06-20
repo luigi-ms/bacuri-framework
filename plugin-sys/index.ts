@@ -27,7 +27,7 @@ RegistryManagement.syncronize()
     } else if (opt === Options.Update) {
       main.upd();
     } else if (opt === Options.Remove) {
-      main.del();
+      main.del(plugin);
     } else if (opt === Options.Help) {
       main.help();
     } else if (opt === Options.Version) {

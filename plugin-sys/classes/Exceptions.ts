@@ -64,3 +64,13 @@ export class DownloadException extends Exception {
     this.details = details;
   }
 }
+
+export class NoPluginException extends Exception {
+  constructor(details: string="no extra info") {
+    super();
+    this._code = "PLU01";
+    this._name = "NoPluginException";
+    this._message = "This plugin does not exist or has a different name";
+    this.details = details;
+  }
+}
