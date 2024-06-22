@@ -1,29 +1,51 @@
-# CocaiSS Framework
-
-:warning: Em construção. Projeto não finalizado. :warning:
+# Bacuri - The Custom Framework
 
 ## Sobre
 
-CocaiSS é um framework minimalista que faz uso de Material Design, e que possui
+Bacuri é um framework minimalista que faz uso de Material Design, e que possui
 um sistema de Plugins para aumentar suas capacidades.
 
 ## Instalação
 
-CocaiSS é composto por um Core e um Plugin Manager.
+O framework é composto por um Core, que são as classes básicas, e um Plugin Manager.
 Instale o framework com o NPM:
 
 ```bash
-npm i cocaiss
+npm i bacuri
 ```
 
 Ou com o Yarn
 ```bash
-yarn add cocaiss
+yarn add bacuri
 ```
+
+## Uso
+### Core
+Após a instalação importe o Core adicionando este código no principal arquivo scss.
+
+```scss
+@import '~/bacuri/core/main';
+@import './plugins.scss';
+```
+
+### Plugin Manager
+O Manager é instalado em sua máquina automaticamente após a instalação, e pode ser executado digitando ```psys``` no terminal. Para facilitar o gerenciamento, o sistema faz uso dos arquivos registry.json e plugins.scss, que podem ser criados com o comando
+```bash
+$ psys -i
+```
+#### Adicionar um plugin e salvar
+Para adicionar um novo plugin, execute os comandos nessa ordem.
+```bash
+$ psys -a nome-do-plugin
+
+$ psys -s nome-do-plugin
+```
+
+Outros comandos disponíveis estão listados em ```psys -h```.
 
 ## Plugins
 
-O CocaiSS basicamente adiciona uma paleta de cores, uma tipografia, estilizar
+Bacuri basicamente adiciona uma paleta de cores, uma tipografia, estilizar
 os botões e um flex layout à sua página. Qualquer código CSS/Sass que não
 interfira na estilização trazida pelo framework pode ser adicionado manualmente,
 mas há também um sistema de plugins para caso queira uma estilização que demande
@@ -38,7 +60,8 @@ então o entendimento de HTML Semântico é necessário para usar este framework
 
 -   HTML5
 -   SCSS
--   Node.js
+-   Typescript
+-   Rollup
 
 ## Autor
 
