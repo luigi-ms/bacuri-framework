@@ -1,8 +1,6 @@
 import { exec } from "child_process";
-import {
-  DownloadException,
-  GenericException,
-} from "./Exceptions.js";
+import path from "path";
+import { DownloadException, GenericException } from "./Exceptions.js";
 
 export default class RepoOperations {
   constructor() {}
@@ -15,10 +13,11 @@ export default class RepoOperations {
    **/
   public download(pluginName: string): Promise<void> {
     const nameSplitted: string = pluginName.split("/")[1];
+    const folderPath = path.resolve("installed", nameSplitted);
 
     try {
       exec(
-        `git clone https://github.com/${pluginName} ./installed/${nameSplitted}`,
+        `git clone https://github.com/${pluginName} ${folderPath}`,
         (err, out, stderr) => {
           if (err) {
             console.error(err);
@@ -44,8 +43,10 @@ export default class RepoOperations {
   }
 
   public async pullFromRemote(folder: string): Promise<void> {
+    const folderPath = path.resolve("installed", folder);
+
     try {
-      exec(`cd ./installed/${folder} && git pull`, (err, out, stderr) => {
+      exec(`cd ${folderPath} && git pull`, (err, out, stderr) => {
         if (err) {
           console.error(err);
           return;

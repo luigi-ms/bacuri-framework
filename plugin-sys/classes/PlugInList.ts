@@ -3,12 +3,12 @@
  * @author Luigi Moraes
  * **/
 
+import { appendFile } from "fs";
+import path from "path";
 import PlugIn from "./PlugIn.js";
 import RegistryManagement from "./RegistryManagement.js";
 import RepoOperations from "./RepoOperations.js";
 import { Exception, NoPluginException } from "./Exceptions.js";
-import { appendFile } from "fs";
-import path from "path";
 
 export default class PlugInList {
   protected _list: Map<string, PlugIn>;
@@ -73,7 +73,7 @@ export default class PlugInList {
   }
 
   public pluginIntegrate(plName: string): void {
-    const filePath = `${this._homePath}/core/plugins.scss`;
+    const filePath = path.resolve(this._homePath, "core", "plugins.scss");
     const data = `@import ${this._homePath}/installed/${plName}/main;\n`;
 
     appendFile(filePath, data, (err) => {

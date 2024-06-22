@@ -4,6 +4,7 @@
 
 import PlugInList from "./PlugInList.js";
 import PlugIn from "./PlugIn.js";
+import path from "path";
 
 export enum Options {
   Add = "-a",
@@ -97,9 +98,12 @@ export class Main {
   public start(): void {
     const content = JSON.stringify({ list: [] });
     this._list.filesOps
-      .createFile("./registry.json", content)
+      .createFile("registry.json", content)
       .then(() => {
-        this._list.filesOps.createFile("core/plugins.scss", "")
+        this._list.filesOps.createFile(
+          path.resolve("core", "plugins.scss"),
+          ""
+        );
       })
       .catch((rej) => console.error(rej));
   }
