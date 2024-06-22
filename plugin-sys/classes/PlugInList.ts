@@ -73,7 +73,7 @@ export default class PlugInList {
   }
 
   public pluginIntegrate(plName: string): void {
-    const filePath = path.resolve(this._homePath, "core", "plugins.scss");
+    const filePath = path.resolve("plugins.scss");
     const data = `@import ${this._homePath}/installed/${plName}/main;\n`;
 
     appendFile(filePath, data, (err) => {
@@ -82,7 +82,7 @@ export default class PlugInList {
   }
 
   public async pluginSeparate(plName: string): Promise<void> {
-    const filePath = path.resolve(this._homePath, "core", "plugins.scss");
+    const filePath = path.resolve("plugins.scss");
 
     try {
       const reader: string = await promises.readFile(filePath, "utf8");

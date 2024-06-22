@@ -64,11 +64,11 @@ export default class RegistryManagement {
       const reader: string = await promises.readFile("registry.json", "utf8");
       const registry = JSON.parse(reader);
 
-      const updated = registry.list.filter((p: PlugIn) => p.name !== pl.name);
+      registry.list = registry.list.filter((p: PlugIn) => p.name !== pl.name);
 
       //get error code
-      await promises.writeFile("registry.json", JSON.stringify(updated));
-    } catch (err) {
+      await promises.writeFile("registry.json", JSON.stringify(registry));
+  } catch (err) {
       console.error(err instanceof Exception ? err.getResume() : err);
     }
   }

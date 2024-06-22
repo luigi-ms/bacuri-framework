@@ -5,3 +5,4 @@ installed/
 dist/
 core/plugins.scss
 registry.json
+plugins.scss

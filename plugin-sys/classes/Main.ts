@@ -84,8 +84,8 @@ export class Main {
   }
 
   public help(): void {
-    console.log(`Usage: p-sys [option] [name] or
-    p-sys [option] [author/name]
+    console.log(`Usage: psys [option] [name] or
+    psys [option] [author/name]
           -a [author/name] Adds a new plugin
           -i Creates the registry file
           -h Shows this help log
