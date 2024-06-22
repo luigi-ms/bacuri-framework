@@ -7,6 +7,8 @@ import PlugIn from "./PlugIn.js";
 import RegistryManagement from "./RegistryManagement.js";
 import RepoOperations from "./RepoOperations.js";
 import { Exception, NoPluginException } from "./Exceptions.js";
+import { appendFile } from "fs";
+import path from "path";
 
 export default class PlugInList {
   protected _list: Map<string, PlugIn>;
@@ -14,6 +16,7 @@ export default class PlugInList {
   protected _repoOps: RepoOperations;
   protected _length: number;
   protected _last: PlugIn;
+  protected _homePath: string;
 
   constructor(map?: Map<string, PlugIn>) {
     this._list = map ?? new Map();
@@ -21,6 +24,10 @@ export default class PlugInList {
     this._repoOps = new RepoOperations();
     this._length = 0;
     this._last = new PlugIn("", "");
+    this._homePath = import.meta.dirname
+      .split(path.sep)
+      .slice(0, -2)
+      .join(path.sep);
   }
 
   /**
@@ -63,6 +70,15 @@ export default class PlugInList {
     return result
       ? Promise.resolve(result)
       : Promise.reject(new NoPluginException());
+  }
+
+  public pluginIntegrate(plName: string): void {
+    const filePath = `${this._homePath}/core/plugins.scss`;
+    const data = `@import ${this._homePath}/installed/${plName}/main;\n`;
+
+    appendFile(filePath, data, (err) => {
+      if (err) console.error(err);
+    });
   }
 
   public get list(): Map<string, PlugIn> {

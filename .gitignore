@@ -3,4 +3,4 @@ styles/
 prod/
 installed/
 registry.json
-.temp
+core/plugins.scss

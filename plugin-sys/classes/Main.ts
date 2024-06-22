@@ -51,7 +51,7 @@ export class Main {
   public upd(pluginName: string): void {
     // 1. Try run a git pull inside the plugin folder
     // 2. Try run a git clone and replace the folder
-   this._list.updatePlugin(pluginName) 
+    this._list.updatePlugin(pluginName);
   }
 
   public del(pluginName: string): void {
@@ -70,11 +70,10 @@ export class Main {
         pl.author = json.author;
         pl.version = json.version;
 
+        this._list.filesOps.addToRegistry(pl);
         return pl;
       })
-      .then((pl) => {
-        this._list.filesOps.addToRegistry(pl);
-      })
+      .then((pl) => this._list.pluginIntegrate(pl.name))
       .catch((rej) => console.error(rej.getResume()));
   }
 
@@ -99,6 +98,9 @@ export class Main {
     const content = JSON.stringify({ list: [] });
     this._list.filesOps
       .createFile("./registry.json", content)
+      .then(() => {
+        this._list.filesOps.createFile("core/plugins.scss", "")
+      })
       .catch((rej) => console.error(rej));
   }
 }

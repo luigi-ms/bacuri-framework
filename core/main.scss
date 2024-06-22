@@ -2,7 +2,8 @@
 @use "components/typos";
 @use "components/layout";
 @use "components/buttons";
-@import "../normalize.css";
+@use "./plugins.scss";
+@import "./normalize.css";
 
 * {
   margin: 0;
