@@ -3,7 +3,7 @@
  * @author Luigi Moraes
  * **/
 
-import { appendFile } from "fs";
+import { appendFile, promises } from "fs";
 import path from "path";
 import PlugIn from "./PlugIn.js";
 import RegistryManagement from "./RegistryManagement.js";
@@ -79,6 +79,20 @@ export default class PlugInList {
     appendFile(filePath, data, (err) => {
       if (err) console.error(err);
     });
+  }
+
+  public async pluginSeparate(plName: string): Promise<void> {
+    const filePath = path.resolve(this._homePath, "core", "plugins.scss");
+
+    try {
+      const reader: string = await promises.readFile(filePath, "utf8");
+      const plugins: Array<string> = reader.split("\n");
+      const removed = plugins.filter((pl) => !pl.includes(plName));
+
+      await promises.writeFile(filePath, JSON.stringify(removed.join("\n")));
+    } catch (err) {
+      console.error(err instanceof Exception ? err.getResume() : err);
+    }
   }
 
   public get list(): Map<string, PlugIn> {

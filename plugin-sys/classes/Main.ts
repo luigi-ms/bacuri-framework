@@ -59,6 +59,7 @@ export class Main {
     this._list
       .del(pluginName)
       .then(() => this._list.filesOps.removeFromDir(pluginName))
+      .then(() => this._list.pluginSeparate(pluginName))
       .catch((rej) => console.error(rej));
   }
 
