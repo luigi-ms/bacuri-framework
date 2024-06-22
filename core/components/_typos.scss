@@ -1,6 +1,6 @@
-@use "../core/colors";
-@use "../core/fonts";
-@use "../core/variables" as vars;
+@use "../ground/colors";
+@use "../ground/fonts";
+@use "../ground/variables" as vars;
 @use "sass:math";
 
 $headerFontSize: 4.5rem;

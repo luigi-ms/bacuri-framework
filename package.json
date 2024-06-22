@@ -2,20 +2,26 @@
   "name": "cocaiss-framework",
   "version": "0.1.0-alpha",
   "description": "Simple Framework focused on Semantic HTML",
-  "main": "pages/index.html",
   "repository": "https://github.com/luigi-ms/cocaiss-framework",
   "author": "Luigi Moraes <luigimoraessantos@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "bin": {
+    "psys": "dist/psys.js"
+  },
   "dependencies": {
     "sass": "^1.77.6"
   },
   "scripts": {
-    "watch-scss": "sass --watch ./scss:./styles",
-    "run-scss": "sass ./scss:./styles"
+    "watch-scss": "sass --watch ./core:./styles",
+    "run-scss": "sass ./core:./styles",
+    "core": "cp ./core ./",
+    "build": "npx rollup -c"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/node": "^20.14.6",
+    "rollup": "^4.18.0",
     "typescript": "^5.4.5"
   }
 }

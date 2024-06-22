@@ -102,7 +102,7 @@ export class Main {
       .createFile("registry.json", content)
       .then(() => {
         this._list.filesOps.createFile(
-          path.resolve("core", "plugins.scss"),
+          path.resolve("plugins.scss"),
           ""
         );
       })

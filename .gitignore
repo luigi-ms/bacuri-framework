@@ -2,5 +2,6 @@ node_modules/
 styles/
 prod/
 installed/
-registry.json
+dist/
 core/plugins.scss
+registry.json
