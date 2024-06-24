@@ -8,6 +8,7 @@
 Bacuri é um framework minimalista que faz uso de Material Design, e que possui
 um sistema de Plugins para aumentar suas capacidades.
 
+Consulte a [doc oficial](https://github.com/luigi-ms/bacuri-framework/wiki)
 ## Instalação
 
 O framework é composto por um Core, que são as classes básicas, e um Plugin Manager.
@@ -21,30 +22,6 @@ Ou com o Yarn
 ```bash
 yarn add bacuri
 ```
-
-## Uso
-### Core
-Após a instalação importe o Core adicionando este código no principal arquivo scss.
-
-```scss
-@import '~/bacuri/core/main';
-@import './plugins.scss';
-```
-
-### Plugin Manager
-O Manager é instalado em sua máquina automaticamente após a instalação, e pode ser executado digitando ```psys``` no terminal. Para facilitar o gerenciamento, o sistema faz uso dos arquivos registry.json e plugins.scss, que podem ser criados com o comando
-```bash
-$ psys -i
-```
-#### Adicionar um plugin e salvar
-Para adicionar um novo plugin, execute os comandos nessa ordem.
-```bash
-$ psys -a nome-do-plugin
-
-$ psys -s nome-do-plugin
-```
-
-Outros comandos disponíveis estão listados em ```psys -h```.
 
 ## Plugins
 
