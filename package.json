@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "psys": "dist/psys.js"
+    "pulp": "dist/psys.js"
   },
   "dependencies": {
     "sass": "^1.77.6"
