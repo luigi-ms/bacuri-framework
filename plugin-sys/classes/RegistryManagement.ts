@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Implements the functions that handle
+ * the registry.json and other file operations.
+ * @author Luigi Moraes */
 import { promises } from "fs";
 import path from "path";
 import {
@@ -7,6 +11,7 @@ import {
 } from "./Exceptions.js";
 import PlugIn from "./PlugIn.js";
 
+//All the attributes in the manifest file
 type InfoJSON = {
   name: string;
   description: string;
@@ -18,6 +23,11 @@ type InfoJSON = {
 export default class RegistryManagement {
   constructor() {}
 
+  /**
+   * @description Gets the plugin info and resumes it as
+   * a InfoJSON object
+   * @param {string} pluginName
+   * @returns Promise<InfoJSON> */
   public async readManifest(pluginName: string): Promise<InfoJSON> {
     const folderPath: string = path.resolve("installed", pluginName);
 
@@ -37,6 +47,10 @@ export default class RegistryManagement {
     }
   }
 
+  /**
+   * @param {string} fileName
+   * @param {string} content
+   * @returns Promise<void> */
   public async createFile(fileName: string, content: string): Promise<void> {
     try {
       await promises.writeFile(fileName, content);
@@ -45,6 +59,11 @@ export default class RegistryManagement {
     }
   }
 
+  /**
+   * @description Reads the registry and pushes the
+   * plugin object like a array.
+   * @param {PlugIn} pl
+   * @returns Promise<void> */
   public async addToRegistry(pl: PlugIn): Promise<void> {
     try {
       const reader: string = await promises.readFile("registry.json", "utf8");
@@ -59,6 +78,10 @@ export default class RegistryManagement {
     }
   }
 
+  /**
+   * @description Filter out the plugin object from the registry file.
+   * @param {PlugIn} pl
+   * @returns Promise<void> */
   public async removeFromRegistry(pl: PlugIn): Promise<void> {
     try {
       const reader: string = await promises.readFile("registry.json", "utf8");
@@ -66,13 +89,15 @@ export default class RegistryManagement {
 
       registry.list = registry.list.filter((p: PlugIn) => p.name !== pl.name);
 
-      //get error code
       await promises.writeFile("registry.json", JSON.stringify(registry));
-  } catch (err) {
+    } catch (err) {
       console.error(err instanceof Exception ? err.getResume() : err);
     }
   }
 
+  /**
+   * @param {string} folderName
+   * @returns Promise<void> */
   public async removeFromDir(folderName: string): Promise<void> {
     try {
       await promises.rm(path.resolve("installed", folderName), {
@@ -83,6 +108,9 @@ export default class RegistryManagement {
     }
   }
 
+  /**
+   * @description Converts the registry to a Map object.
+   * @returns Promise<Map<string, PlugIn>>*/
   public static async syncronize(): Promise<Map<string, PlugIn>> {
     try {
       const reader: string = await promises.readFile("registry.json", "utf8");

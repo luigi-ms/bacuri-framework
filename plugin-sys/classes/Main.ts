@@ -6,6 +6,7 @@ import PlugInList from "./PlugInList.js";
 import PlugIn from "./PlugIn.js";
 import path from "path";
 
+//Options know by the system
 export enum Options {
   Add = "-a",
   Init = "-i",
@@ -27,6 +28,12 @@ export class Main {
     this._list = list;
   }
 
+  //synced with registry methods
+  /**
+   * @description Check if plugin exists in Github then
+   * tries to clone it.
+   * @see RepoOperations#existsInRemote
+   * @see PlugInList#add */
   public add(pluginName: string): void {
     console.log("Please wait while we look for it");
     this._list.repoOps
@@ -41,6 +48,9 @@ export class Main {
       });
   }
 
+  /**@description Pull plugin info fron registry by
+   * looking for its name.
+   * @see PlugInList#searchByName */
   public pull(pluginName: string): void {
     console.log("Retrieving...");
     this._list
@@ -49,12 +59,18 @@ export class Main {
       .catch((rej) => console.error(rej.getResume()));
   }
 
+  /**@see PlugInList#updatePlugin **/
   public upd(pluginName: string): void {
-    // 1. Try run a git pull inside the plugin folder
-    // 2. Try run a git clone and replace the folder
     this._list.updatePlugin(pluginName);
   }
 
+  /**
+   * @description Removes from the Map, then the files
+   * from the folder, and erases the line in the
+   * plugins.scss.
+   * @see PlugInList#del
+   * @see PlugInList#pluginSeparate
+   * @see RegistryManagement#removeFromDir*/
   public del(pluginName: string): void {
     this._list
       .del(pluginName)
@@ -63,6 +79,12 @@ export class Main {
       .catch((rej) => console.error(rej));
   }
 
+  /**
+   * @description Reads the manifest file and save the info
+   * in registry and plugins.scss.
+   * @see RegistryManagement#readManifest
+   * @see RegistryManagement#addToRegistry
+   * @see PlugInList#pluginIntegrate **/
   public save(pluginName: string): void {
     this._list.filesOps
       .readManifest(pluginName)
@@ -79,6 +101,7 @@ export class Main {
       .catch((rej) => console.error(rej.getResume()));
   }
 
+  //not synced with registry methods
   public getVersion(): void {
     console.log("v0.1.0-alpha");
   }
@@ -96,15 +119,16 @@ export class Main {
           -v Shows version of this system`);
   }
 
+  /**
+   * @description Creates the necessary files for
+   * the plugin management.
+   * @see RegistryManagement#createFile */
   public start(): void {
     const content = JSON.stringify({ list: [] });
     this._list.filesOps
       .createFile("registry.json", content)
       .then(() => {
-        this._list.filesOps.createFile(
-          path.resolve("plugins.scss"),
-          ""
-        );
+        this._list.filesOps.createFile(path.resolve("plugins.scss"), "");
       })
       .catch((rej) => console.error(rej));
   }

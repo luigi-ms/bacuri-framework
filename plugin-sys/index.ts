@@ -8,8 +8,11 @@ import { Options, Main } from "./classes/Main.js";
 import RegistryManagement from "./classes/RegistryManagement.js";
 import { Exception } from "./classes/Exceptions.js";
 
-//Gets an updated version from registry.json
-//before process anything
+/**
+ * @description Gets an updated version from registry.json
+ * then calls the necessary method. The options that does
+ * not need the registry info goes in the finally() scope
+ **/
 
 const args: Array<string> = process.argv;
 const opt: string = args[2];

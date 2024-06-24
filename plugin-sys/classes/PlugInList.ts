@@ -31,8 +31,11 @@ export default class PlugInList {
   }
 
   /**
-   * Downloads and saves in the Map
+   * @description Downloads and stores the
+   * plugin info in the Map
    * @param {string} pluginName
+   * @returns void
+   * @see RepoOperations#download
    * **/
   public add(pluginName: string): void {
     this._repoOps
@@ -45,12 +48,24 @@ export default class PlugInList {
       .finally(() => console.warn("Download finished"));
   }
 
+  /**
+   * @description Pulls the plugin from Github and
+   * replaces it.
+   * @param {string} pluginName
+   * @returns void
+   * @see RepoOperations#pullFromRemote*/
   public updatePlugin(pluginName: string): void {
     this._repoOps
       .pullFromRemote(pluginName)
       .catch((rej) => console.error(rej.getResume()));
   }
 
+  /**
+   * @description Gets the plugin from the map, then
+   * removes from the registry and the Map itself.
+   * @param {string} pluginName
+   * @returns Promise<void | NoPluginException>
+   * @see RegistryManagement#removeFromRegistry */
   public async del(pluginName: string): Promise<void | Exception> {
     const removedPlugin = this._list.get(pluginName);
 
@@ -63,8 +78,11 @@ export default class PlugInList {
     }
   }
 
+  /**
+   * @description Gets the plugin info from the Map
+   * @param {string} pluginName
+   * @returns Promise<PlugIn | NoPluginException> */
   public async searchByName(pluginName: string): Promise<PlugIn | void> {
-    //NOTE: plugin folder name must be snakecased
     const result = this._list.get(pluginName);
 
     return result
@@ -72,6 +90,10 @@ export default class PlugInList {
       : Promise.reject(new NoPluginException());
   }
 
+  /**
+   * @description Saves the plugin path to the plugins.scss
+   * @param {string} plName
+   * @returns void */
   public pluginIntegrate(plName: string): void {
     const filePath = path.resolve("plugins.scss");
     const data = `@import ${this._homePath}/installed/${plName}/main;\n`;
@@ -81,6 +103,11 @@ export default class PlugInList {
     });
   }
 
+  /**
+   * @description Erases the line with the plugin path from
+   * the plugins.scss
+   * @param {string} plName
+   * @returns Promise<void> */
   public async pluginSeparate(plName: string): Promise<void> {
     const filePath = path.resolve("plugins.scss");
 
@@ -95,6 +122,7 @@ export default class PlugInList {
     }
   }
 
+  //Getters
   public get list(): Map<string, PlugIn> {
     return this._list;
   }
