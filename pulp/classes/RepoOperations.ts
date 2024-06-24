@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Implementation of the Github related
+ * operations.
+ * @author Luigi Moraes */
+
 import { exec } from "child_process";
 import path from "path";
 import { DownloadException, GenericException } from "./Exceptions.js";
@@ -6,9 +11,11 @@ export default class RepoOperations {
   constructor() {}
 
   /**
-   * Download the plugin and save in ./installed folder
+   * Clones the plugin from Github and save it
+   * in the ./installed folder
    * @param {string} pluginName
-   * @throws Exception
+   * @returns Promise<void>
+   * @throws GenericException | DownloadException
    * @see child_process#exec
    **/
   public download(pluginName: string): Promise<void> {
@@ -42,6 +49,13 @@ export default class RepoOperations {
     }
   }
 
+  /**
+   * @description Changes to plugin folder and updates it
+   * by pulling the repo.
+   * @param {string} folder
+   * @throws GenericException
+   * @returns Promise<void>
+   * @see child_process#exec */
   public async pullFromRemote(folder: string): Promise<void> {
     const folderPath = path.resolve("installed", folder);
 
@@ -62,9 +76,9 @@ export default class RepoOperations {
   }
 
   /**
-   * Uses Github API to check plugin's existence
+   * @description Uses Github API to check plugin's existence
    * @param {string} pluginName
-   * @returns {Promise<boolean>}
+   * @returns Promise<boolean>
    * */
   public async existsInRemote(pluginName: string): Promise<boolean> {
     const res: Response = await fetch(
