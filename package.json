@@ -5,6 +5,7 @@
   "repository": "https://github.com/luigi-ms/bacuri-framework",
   "author": "Luigi Moraes <luigimoraessantos@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/luigi-ms/bacuri-framework/wiki",
   "type": "module",
   "bin": {
     "pulp": "dist/psys.js"
@@ -13,8 +14,8 @@
     "sass": "^1.77.6"
   },
   "scripts": {
-    "watch-scss": "sass --watch ./core:./styles",
-    "run-scss": "sass ./core:./styles",
+    "watch-scss": "sass --watch ./pit:./styles",
+    "run-scss": "sass ./pit:./styles",
     "build": "npx rollup -c"
   },
   "devDependencies": {
