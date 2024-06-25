@@ -1,6 +1,6 @@
 {
   "name": "bacuri",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-alpha-2",
   "description": "The Custom Framework",
   "repository": "https://github.com/luigi-ms/bacuri-framework",
   "author": "Luigi Moraes <luigimoraessantos@gmail.com>",
@@ -8,7 +8,7 @@
   "homepage": "https://github.com/luigi-ms/bacuri-framework/wiki",
   "type": "module",
   "bin": {
-    "pulp": "dist/psys.js"
+    "pulp": "dist/pulp.js"
   },
   "dependencies": {
     "sass": "^1.77.6"
