@@ -1,4 +1,4 @@
-# Contributing to CONTRIBUTING.md
+# Contributing to Bacuri 
 
 First off, thanks for taking the time to contribute! 
 
@@ -13,25 +13,10 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 ## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
 - [I Want To Contribute](#i-want-to-contribute)
 - [Reporting Bugs](#reporting-bugs)
 - [Suggesting Enhancements](#suggesting-enhancements)
-- [Your First Code Contribution](#your-first-code-contribution)
-- [Improving The Documentation](#improving-the-documentation)
-- [Styleguides](#styleguides)
-- [Commit Messages](#commit-messages)
-- [Join The Project Team](#join-the-project-team)
-
-
-## Code of Conduct
-
-This project and everyone participating in it is governed by the
-[CONTRIBUTING.md Code of Conduct](blob/master/CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code. Please report unacceptable behavior
-to <>.
-
 
 ## I Have a Question
 
@@ -116,25 +101,3 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
 - You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux. 
 - **Explain why this enhancement would be useful** to most CONTRIBUTING.md users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
-
-
-
-### Your First Code Contribution
-
-
-### Improving The Documentation
-
-
-## Styleguides
-### Commit Messages
-
-
-## Join The Project Team
-
-
-
-## Attribution
-This guide is based on the **contributing.md**. [Make your own](https://contributing.md/)!
-
-
-Obrigado por querer contribuir com meu projeto 😃!
