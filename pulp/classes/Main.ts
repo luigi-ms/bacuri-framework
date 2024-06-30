@@ -107,8 +107,8 @@ export class Main {
   }
 
   public help(): void {
-    console.log(`Usage: psys [option] [name] or
-    psys [option] [author/name]
+    console.log(`Usage: pulp [option] [name] or
+    pulp [option] [author/name]
           -a [author/name] Adds a new plugin
           -i Creates the registry file
           -h Shows this help log

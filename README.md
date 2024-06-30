@@ -11,6 +11,10 @@ um sistema de Plugins para aumentar suas capacidades.
 Consulte a [doc oficial](https://github.com/luigi-ms/bacuri-framework/wiki)
 ## Instalação
 
+Requirements:
+- Node.js 
+- Sass compiler
+
 O framework é composto por um Core, que são as classes básicas, e um Plugin Manager.
 Instale o framework com o NPM:
 

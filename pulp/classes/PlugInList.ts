@@ -96,7 +96,7 @@ export default class PlugInList {
    * @returns void */
   public pluginIntegrate(plName: string): void {
     const filePath = path.resolve("plugins.scss");
-    const data = `@import ${this._homePath}/installed/${plName}/main;\n`;
+    const data = `@import 'installed/${plName}/main';\n`;
 
     appendFile(filePath, data, (err) => {
       if (err) console.error(err);

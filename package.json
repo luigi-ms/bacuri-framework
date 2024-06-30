@@ -15,8 +15,10 @@
   },
   "scripts": {
     "watch-scss": "sass --watch ./pit:./styles",
-    "run-scss": "sass ./pit:./styles",
-    "build": "npx rollup -c"
+    "compile-js": "tsc",
+    "compile-scss": "sass ./pit:./styles",
+    "rollup": "npx rollup -c",
+    "build": "npm run compile-js && npm run compile-scss && npm run rollup"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
