@@ -116,7 +116,14 @@ export default class PlugInList {
       const plugins: Array<string> = reader.split("\n");
       const removed = plugins.filter((pl) => !pl.includes(plName));
 
-      await promises.writeFile(filePath, JSON.stringify(removed.join("\n")));
+      //Check if removed is empty
+      //Write to file: /* erased */
+
+      if(removed.length === 0){
+        await promises.writeFile(filePath, JSON.stringify("/* erased */"));
+      }else{
+        await promises.writeFile(filePath, JSON.stringify(removed.join("\n")));
+      }
     } catch (err) {
       console.error(err instanceof Exception ? err.getResume() : err);
     }
