@@ -1,7 +1,7 @@
 ![Bacuri logo](Bacuri.png)
 # Bacuri - The Custom Framework
 
-![Version Badge](https://badgen.net/badge/version/0.1.0-alpha/green)
+![Version Badge](https://badgen.net/badge/version/0.1.0-beta/green)
 
 ## About
 
