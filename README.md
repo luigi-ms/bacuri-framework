@@ -3,51 +3,51 @@
 
 ![Version Badge](https://badgen.net/badge/version/0.1.0-alpha/green)
 
-## Sobre
+## About
 
-Bacuri é um framework minimalista que faz uso de Material Design, e que possui
-um sistema de Plugins para aumentar suas capacidades.
+Bacuri is a minimalist framework that uses Material Design concepts, and has a
+plugin system to enhance its capabilities.
 
-Consulte a [doc oficial](https://github.com/luigi-ms/bacuri-framework/wiki)
-## Instalação
+Check the [official documentation](https://github.com/luigi-ms/bacuri-framework/wiki)
+for more infos.
+
+## Installation
 
 Requirements:
 - Node.js 
 - Sass compiler
 
-O framework é composto por um Core, que são as classes básicas, e um Plugin Manager.
-Instale o framework com o NPM:
-
+NPM
 ```bash
-npm i bacuri
+$ npm i bacuri
 ```
 
-Ou com o Yarn
+Yarn
 ```bash
-yarn add bacuri
+$ yarn add bacuri
 ```
 
 ## Plugins
 
-Bacuri basicamente adiciona uma paleta de cores, uma tipografia, estilizar
-os botões e um flex layout à sua página. Qualquer código CSS/Sass que não
-interfira na estilização trazida pelo framework pode ser adicionado manualmente,
-mas há também um sistema de plugins para caso queira uma estilização que demande
-mais código.
+Bacuri basically adds a color scheme, some typography, buttons and set 
+a flexbox layout. For more components can be addded using the plugin system.
 
-## HTML Semântico
+[Read more about the plugin system](https://github.com/luigi-ms/bacuri-framework/wiki/Pulp.md)
 
-Muitas das classes estão ligadas diretamente a uma tag html5 específica,
-então o entendimento de HTML Semântico é necessário para usar este framework.
+## Semantic HTML
 
-## Tecnologias
+Since the classes are attached to a specific HTML tag, the understading of
+[Semantic HTML](https://developer.mozilla.org/en-US/curriculum/core/semantic-html/)
+is need for a better use.
+
+## Built with
 
 -   HTML5
 -   SCSS
 -   Typescript
 -   Rollup
 
-## Autor
+## Author
 
 Luigi Moraes
 
