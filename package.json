@@ -1,13 +1,20 @@
 {
   "name": "bacuri",
-  "version": "0.1.0-beta",
+  "version": "0.1.0-beta.1",
   "description": "The Custom Framework",
   "repository": "https://github.com/luigi-ms/bacuri-framework",
   "author": "Luigi Moraes <luigimoraessantos@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/luigi-ms/bacuri-framework#readme",
   "bugs": "https://github.com/luigi-ms/bacuri-framework/issues",
-  "keywords": ["css", "framework", "semantic", "html", "sass", "typescript"],
+  "keywords": [
+    "css",
+    "framework",
+    "semantic",
+    "html",
+    "sass",
+    "typescript"
+  ],
   "funding": [
     {
       "type": "KoFi",
