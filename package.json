@@ -5,7 +5,15 @@
   "repository": "https://github.com/luigi-ms/bacuri-framework",
   "author": "Luigi Moraes <luigimoraessantos@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/luigi-ms/bacuri-framework/wiki",
+  "homepage": "https://github.com/luigi-ms/bacuri-framework#readme",
+  "bugs": "https://github.com/luigi-ms/bacuri-framework/issues",
+  "keywords": ["css", "framework", "semantic", "html", "sass", "typescript"],
+  "funding": [
+    {
+      "type": "KoFi",
+      "url": "https://ko-fi.com/bacuri"
+    }
+  ],
   "type": "module",
   "bin": {
     "pulp": "dist/pulp.js"
@@ -26,10 +34,4 @@
     "rollup": "^4.18.0",
     "typescript": "^5.4.5"
   }
-  "funding": [
-    {
-      "type": "KoFi",
-      "url": "https://ko-fi.com/bacuri"
-    }
-  ]
 }
