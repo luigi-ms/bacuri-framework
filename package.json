@@ -18,20 +18,18 @@
   "bin": {
     "pulp": "dist/pulp.js"
   },
-  "dependencies": {
-    "sass": "^1.77.6"
-  },
   "scripts": {
-    "watch-scss": "sass --watch ./pit:./styles",
+    "build": "npm run compile-js && npm run compile-scss && npm run rollup",
     "compile-js": "tsc",
-    "compile-scss": "sass ./pit:./styles",
+    "compile-scss": "sass ./seed:./styles",
     "rollup": "npx rollup -c",
-    "build": "npm run compile-js && npm run compile-scss && npm run rollup"
+    "watch-scss": "sass --watch ./seed:./styles"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/node": "^20.14.6",
     "rollup": "^4.18.0",
+    "sass": "^1.77.6",
     "typescript": "^5.4.5"
   }
 }
