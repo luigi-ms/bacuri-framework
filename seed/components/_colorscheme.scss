@@ -2,10 +2,14 @@
 
 $bgBorderRadius: 0.4rem;
 
+.outline-accent-1,
+.bg-variant,
 .bg-accent {
   border-radius: $bgBorderRadius;
   padding: 0.45rem;
+}
 
+.bg-accent {
   &-1 {
     @extend .bg-accent;
     background-color: colors.$accent-1;
@@ -19,12 +23,20 @@ $bgBorderRadius: 0.4rem;
   }
 }
 
-.bg-variant-1 {
-  background-color: colors.$variant-accent-1;
-  color: transparent;
+.bg-variant {
+  &-1 {
+    @extend .bg-variant;
+    background-color: colors.$variant-accent-1;
+    color: colors.$on-accent-1;
+  } 
+
+  &-2 {
+    @extend .bg-variant;
+    background-color: colors.$variant-accent-2;
+    color: colors.$on-accent-1;
+  }
 }
 
-.bg-variant-2 {
-  background-color: colors.$variant-accent-1;
-  color: transparent;
+.outline-accent-1 {
+  border: solid 0.1rem colors.$accent-1;
 }

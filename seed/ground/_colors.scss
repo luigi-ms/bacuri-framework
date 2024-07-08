@@ -1,15 +1,15 @@
-// Coloscheme based on color Green #E48315
+// Coloscheme based on color Green #296E01
 
 $surface-0: #fff5ee; //body, main
 $surface-1: #f9ecdf; //navbar, footer
 $surface-2: ""; //cards, sheets
-$accent-1: #6c541e; //high emphasis
+$accent-1: #296e01; //high emphasis
 $accent-2: #e7e0d6; //low emphasis
-$variant-accent-1: ""; //error messages 
-$variant-accent-2: ""; //warning messages
+$variant-accent-1: #9b2512; //error messages 
+$variant-accent-2: #c16600; //success messages
 $container-accent-1: ""; //buttons high emphasis
 $container-accent-2: ""; //buttons low emphasis
-$on-accent-1: $surface-0; //against high emphasis
-$on-accent-2: ""; //agains low emphasis
+$on-accent-1: #fff5ee; //against high emphasis
+$on-accent-2: #296e01; //agains low emphasis
 $on-container-accent-1: ""; //against buttons 1
 $on-container-accent-2: ""; //against buttons 2
