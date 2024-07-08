@@ -1,0 +1,30 @@
+@use "../ground/colors";
+
+$bgBorderRadius: 0.4rem;
+
+.bg-accent {
+  border-radius: $bgBorderRadius;
+  padding: 0.45rem;
+
+  &-1 {
+    @extend .bg-accent;
+    background-color: colors.$accent-1;
+    color: colors.$on-accent-1;
+  } 
+
+  &-2 {
+    @extend .bg-accent;
+    background-color: colors.$accent-2;
+    color: colors.$on-accent-2;
+  }
+}
+
+.bg-variant-1 {
+  background-color: colors.$variant-accent-1;
+  color: transparent;
+}
+
+.bg-variant-2 {
+  background-color: colors.$variant-accent-1;
+  color: transparent;
+}
