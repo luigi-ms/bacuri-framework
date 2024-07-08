@@ -19,6 +19,10 @@
     {
       "type": "KoFi",
       "url": "https://ko-fi.com/bacuri"
+    },
+    {
+      "type": "Open Collective",
+      "url": "https://opencollective.com/bacuri-framework"
     }
   ],
   "type": "module",
