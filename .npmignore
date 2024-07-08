@@ -2,5 +2,6 @@ seed/
 pulp/
 prod/
 styles/
+.github/
 tsconfig.json
 rollup.config.mjs
