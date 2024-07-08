@@ -11,22 +11,22 @@
 
   &.btn-primary {
     border: 1px solid transparent;
-    background-color: colors.$darkpurple-1;
-    color: colors.$lightblue-1;
+    background-color: colors.$accent-1;
+    color: colors.$surface-0;
   }
 
   &.btn-secondary {
-    border: 1px solid colors.$darkpurple-1;
-    background-color: colors.$lightblue-1;
-    color: colors.$darkpurple-1;
+    border: 1px solid colors.$accent-1;
+    background-color: colors.$surface-0;
+    color: colors.$accent-1;
   }
 
   &.btn-primary,
   &.btn-secondary {
     &:active {
-      background-color: colors.$green-1;
-      color: colors.$lightblue-1;
-      border-color: colors.$green-1;
+      background-color: colors.$accent-1;
+      color: colors.$surface-0;
+      border-color: colors.$accent-1;
     }
   }
 }
@@ -36,22 +36,22 @@ a.btn-link {
   padding: 0.2rem;
 
   &:active {
-    color: colors.$green-1;
+    color: colors.$accent-1;
   }
 
   &:link {
-    background-color: colors.$lightblue-2;
-    color: colors.$darkpurple-1;
+    background-color: colors.$surface-0;
+    color: colors.$accent-1;
   }
 }
 
 input.checkbox {
   all: unset;
-  border: 2px solid colors.$darkpurple-1;
+  border: 2px solid colors.$accent-1;
   border-radius: vars.$border-slightly-rounded;
   height: 1.08rem;
   width: 4.2vw;
-  background-color: colors.$lightblue-1;
+  background-color: colors.$surface-0;
 
   &::before {
     content: "";
@@ -60,9 +60,9 @@ input.checkbox {
   }
 
   &:checked {
-    color: colors.$lightblue-1;
-    background-color: colors.$green-1;
-    border: 2px solid colors.$green-1;
+    color: colors.$surface-0;
+    background-color: colors.$accent-1;
+    border: 2px solid colors.$accent-1;
 
     &::before {
       content: "x";
@@ -76,11 +76,11 @@ input.checkbox {
 /* Toggle switch  */
 input.radio {
   all: unset;
-  border: 2px solid colors.$darkpurple-1;
+  border: 2px solid colors.$accent-1;
   border-radius: vars.$border-rounded;
   height: 1.08rem;
   width: 4.2vw;
-  background-color: colors.$lightblue-1;
+  background-color: colors.$surface-0;
 
   &::before {
     content: "";
@@ -89,9 +89,9 @@ input.radio {
   }
 
   &:checked {
-    color: colors.$lightblue-1;
-    background-color: colors.$green-1;
-    border: 2px solid colors.$green-1;
+    color: colors.$surface-0;
+    background-color: colors.$accent-1;
+    border: 2px solid colors.$accent-1;
 
     &::before {
       content: "•";
@@ -105,9 +105,9 @@ input.switch {
   all: unset;
   width: 1.75rem;
   height: 0.45rem;
-  border: 2px solid colors.$darkpurple-1;
+  border: 2px solid colors.$accent-1;
   border-radius: vars.$border-slightly-rounded;
-  background-color: colors.$darkpurple-1;
+  background-color: colors.$accent-1;
 
   &::before {
     border-radius: vars.$border-rounded;
@@ -117,18 +117,18 @@ input.switch {
     height: 1.2rem;
     position: relative;
     bottom: 80%;
-    background-color: colors.$darkpurple-1;
+    background-color: colors.$accent-1;
     transform: translateX(-15%);
     transition: transform 250ms ease-out;
   }
 
   &:checked {
-    color: colors.$lightblue-1;
-    background-color: colors.$green-1;
-    border: 2px solid colors.$green-1;
+    color: colors.$surface-0;
+    background-color: colors.$accent-1;
+    border: 2px solid colors.$accent-1;
 
     &::before {
-      background-color: colors.$green-1;
+      background-color: colors.$accent-1;
       transform: translateX(60%);
     }
   }
