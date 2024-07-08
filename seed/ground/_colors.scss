@@ -1,8 +1,15 @@
-// main color #e48315
-// dark green #6d4115
-// lighter green #fbeadd
-// secondary lighter green #ffead9
+// Coloscheme based on color Green #E48315
 
-$lightgreen: #fff5ee;
-$darkgreen: #503418;
-$green-1: hsl(98, 32%, 45%);
+$surface-0: #fff5ee; //body, main
+$surface-1: #f9ecdf; //navbar, footer
+$surface-2: ""; //cards, sheets
+$accent-1: #503418; //high emphasis
+$accent-2: ""; //low emphasis
+$variant-accent-1: ""; //error messages 
+$variant-accent-2: ""; //warning messages
+$container-accent-1: ""; //buttons high emphasis
+$container-accent-2: ""; //buttons low emphasis
+$on-accent-1: ""; //against high emphasis
+$on-accent-2: ""; //agains low emphasis
+$on-container-accent-1: ""; //against buttons 1
+$on-container-accent-2: ""; //against buttons 2

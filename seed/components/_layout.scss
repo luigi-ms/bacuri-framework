@@ -9,7 +9,7 @@ body {
     "navbar"
     "main"
     "footer";
-  background-color: colors.$lightgreen;
+  background-color: colors.$surface-0;
 }
 
 nav.nav-bar {
@@ -23,8 +23,8 @@ nav.nav-bar {
   height: 10vh;
   width: 100vw;
   padding: 2%;
-  background-color: colors.$lightgreen;
-  color: colors.$darkgreen;
+  background-color: colors.$surface-1;
+  color: colors.$accent-1;
 
   .nav-title {
     font-size: 1.62rem;
@@ -40,7 +40,7 @@ footer.footer-section {
   align-items: baseline;
   justify-content: space-evenly;
   padding: 0.85rem;
-  color: colors.$darkgreen;
+  color: colors.$accent-1;
   width: 100vw;
 
   > * {
@@ -77,5 +77,5 @@ footer.footer-section {
   align-items: center;
   justify-content: center;
   padding: 5%;
-  background-color: colors.$lightgreen;
+  background-color: colors.$surface-1;
 }

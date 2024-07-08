@@ -43,7 +43,7 @@ p {
 
 blockquote.quote {
   padding: 0.75rem;
-  border-left: 0.25rem solid colors.$darkpurple-1;
+  border-left: 0.25rem solid colors.$accent-1;
   border-radius: vars.$border-slightly-rounded;
 
   span.quote-author {
@@ -82,14 +82,14 @@ ol {
 
       &:active {
         font-weight: vars.$bolder-text;
-        background-color: colors.$lightblue-2;
+        background-color: colors.$surface-0;
       }
     }
   }
 
   &.box-list {
     li.list-item {
-      border: 1px solid colors.$darkpurple-1;
+      border: 1px solid colors.$accent-1;
       border-bottom: none;
       padding: 0.4rem;
 
@@ -98,13 +98,13 @@ ol {
       }
 
       &:last-child {
-        border-bottom: 1px solid colors.$darkpurple-1;
+        border-bottom: 1px solid colors.$accent-1;
         border-radius: repeat(2, 0) repeat(2, vars.$border-slightly-rounded);
       }
 
       &:active {
-        background-color: colors.$lightblue-2;
-        border-color: colors.$green-1;
+        background-color: colors.$surface-0;
+        border-color: colors.$accent-1;
         font-weight: vars.$bolder-text;
       }
     }
