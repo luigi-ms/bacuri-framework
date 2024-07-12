@@ -53,10 +53,10 @@ a {
 /* Checkbox button */
 input.checkbox {
   all: unset;
+  height: 1rem;
+  width: 1rem;
   border: 2px solid colors.$accent-1;
   border-radius: vars.$border-slightly-rounded;
-  height: 1.08rem;
-  width: 4.2vw;
   background-color: colors.$surface-0;
 
   &::before {
@@ -81,10 +81,10 @@ input.checkbox {
 /* Radio buttons */
 input.radio {
   all: unset;
+  height: 1rem;
+  width: 1rem;
   border: 2px solid colors.$accent-1;
   border-radius: vars.$border-rounded;
-  height: 1.08rem;
-  width: 4.2vw;
   background-color: colors.$surface-0;
 
   &::before {

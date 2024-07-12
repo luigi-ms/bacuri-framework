@@ -14,14 +14,11 @@ body {
 
 nav.nav-bar {
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: 1fr;
   grid-area: "navbar";
   gap: 1.5rem;
   align-items: center;
-  height: 10vh;
-  width: 100vw;
   padding: 2%;
   background-color: colors.$surface-1;
   color: colors.$accent-1;
@@ -41,7 +38,6 @@ footer.footer-section {
   justify-content: space-evenly;
   padding: 0.85rem;
   color: colors.$accent-1;
-  width: 100vw;
 
   > * {
     width: 100%;
@@ -72,10 +68,11 @@ footer.footer-section {
 }
 
 footer.footer-section {
-  height: 15vh;
   grid-area: "footer";
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
   padding: 5%;
   background-color: colors.$surface-1;
 }

@@ -1,38 +1,22 @@
 /* Phones and tablets  */
-@media (max-width: 991.98px) {
+@media (max-width: 767.98px) {
   nav,
   main,
-  footer {
-    width: 95vw;
-    height: auto;
-  }
+  footer { width: 100vw; }
 
-  input.text-field,
-  textarea.textarea {
-    width: 18rem;
-  }
+  nav, footer { height: 10dvh; }
 
   .button {
     width: 25%;
   }
-
-  label.form-input {
-    height: auto;
-    width: 100%;
-  }
-
-  input.checkbox,
-  input.radio {
-    height: 1.08rem;
-    width: 4.2vw;
-  }
-
-  input.switch {
-    height: 0.4rem;
-    width: 6vw;
-  }
 }
 
 /* Laptops and desktops */
-@media (min-width: 992px) and (max-width: 1399.98px) {
+@media (min-width: 768px) {
+  nav,
+  main,
+  footer { 
+  width: 100vw; }
+
+  nav, footer { height: 7dvh; }
 }
