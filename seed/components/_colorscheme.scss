@@ -1,42 +1,38 @@
 @use "../ground/colors";
 
-$bgBorderRadius: 0.4rem;
-
-.outline-accent-1,
-.bg-variant,
-.bg-accent {
-  border-radius: $bgBorderRadius;
+%bg-basics {
+  border-radius: 0.4rem;
   padding: 0.45rem;
 }
 
-.bg-accent {
-  &-1 {
-    @extend .bg-accent;
+.bg {
+  &-primary {
+    @extend %bg-basics;
     background-color: colors.$accent-1;
     color: colors.$on-accent-1;
   } 
 
-  &-2 {
-    @extend .bg-accent;
+  &-secondary {
+    @extend %bg-basics;
+    border: solid 0.1rem colors.$accent-1;
+  }
+
+  &-tertiary {
+    @extend %bg-basics;
     background-color: colors.$accent-2;
     color: colors.$on-accent-2;
-  }
-}
 
-.bg-variant {
-  &-1 {
-    @extend .bg-variant;
+  }
+
+  &-error {
+    @extend %bg-basics;
     background-color: colors.$variant-accent-1;
     color: colors.$on-accent-1;
   } 
 
-  &-2 {
-    @extend .bg-variant;
+  &-success {
+    @extend %bg-basics;
     background-color: colors.$variant-accent-2;
     color: colors.$on-accent-1;
   }
-}
-
-.outline-accent-1 {
-  border: solid 0.1rem colors.$accent-1;
 }

@@ -2,7 +2,7 @@
 @use "../ground/variables" as vars;
 
 /* Simple buttons variants */
-/* Checkbox button */
+
 button {
   height: 2rem;
   padding: 0.75rem;
@@ -13,27 +13,31 @@ button {
   //change to $container
   &.btn-primary {
     background-color: colors.$accent-1;
-    color: colors.$surface-0;
+    color: colors.$on-accent-1;
   }
 
   &.btn-secondary {
     border: 0.1rem solid colors.$accent-1;
-    background-color: colors.$surface-0;
-    color: colors.$accent-1;
+    color: colors.$on-accent-2;
   }
 
-  &.btn-primary,
-  &.btn-secondary {
-    &:active {
-      background-color: colors.$accent-1;
-      color: colors.$surface-0;
-      border-color: colors.$accent-1;
-    }
+  &.btn-tertiary {
+    background-color: colors.$accent-2;
+    color: colors.$on-accent-2;
+  }
+
+  &.btn-primary:active,
+  &.btn-secondary:active,
+  &.btn-tertiary:active {
+    background-color: colors.$accent-1;
+    color: colors.$surface-0;
+    border-color: colors.$accent-1;
   }
 }
 
-a.btn-link {
+a {
   text-decoration: none;
+  font-weight: bold;
   padding: 0.2rem;
 
   &:active {
@@ -46,6 +50,7 @@ a.btn-link {
   }
 }
 
+/* Checkbox button */
 input.checkbox {
   all: unset;
   border: 2px solid colors.$accent-1;
@@ -62,8 +67,8 @@ input.checkbox {
 
   &:checked {
     color: colors.$surface-0;
-    background-color: colors.$accent-1;
-    border: 2px solid colors.$accent-1;
+    background-color: colors.$variant-accent-2;
+    border: 2px solid colors.$variant-accent-2;
 
     &::before {
       content: "x";
@@ -74,7 +79,6 @@ input.checkbox {
 }
 
 /* Radio buttons */
-/* Toggle switch  */
 input.radio {
   all: unset;
   border: 2px solid colors.$accent-1;
@@ -91,17 +95,24 @@ input.radio {
 
   &:checked {
     color: colors.$surface-0;
-    background-color: colors.$accent-1;
-    border: 2px solid colors.$accent-1;
+    background-color: colors.$variant-accent-2;
+    border: 2px solid colors.$variant-accent-2;
 
     &::before {
       content: "•";
       bottom: 17%;
       left: 23%;
     }
+
+    + label {
+      font-weight: 300;
+      background-color: colors.$variant-accent-2;
+      border: 2px solid colors.$variant-accent-2;
+    }
   }
 }
 
+/* Toggle switch */
 input.switch {
   all: unset;
   width: 1.75rem;
@@ -125,12 +136,18 @@ input.switch {
 
   &:checked {
     color: colors.$surface-0;
-    background-color: colors.$accent-1;
-    border: 2px solid colors.$accent-1;
+    background-color: colors.$variant-accent-2;
+    border: 2px solid colors.$variant-accent-2;
 
     &::before {
-      background-color: colors.$accent-1;
+      background-color: colors.$variant-accent-2;
       transform: translateX(60%);
+    }
+
+    + label {
+      font-weight: 300;
+      background-color: colors.$variant-accent-2;
+      border: 2px solid colors.$variant-accent-2;
     }
   }
 }
